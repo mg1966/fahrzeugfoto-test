@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#123c5b"><link rel="manifest" href="manifest.webmanifest"><title>Fahrzeugfotos V7</title><style>
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#123c5b"><link rel="manifest" href="manifest.webmanifest"><title>Fahrzeugfotos V8</title><style>
 *{box-sizing:border-box}body{font:16px system-ui,-apple-system,sans-serif;max-width:680px;margin:auto;padding:14px;background:#f2f6fa;color:#153349}h1{font-size:1.5rem;margin:10px 0}h2{font-size:1.2rem}section{background:white;border-radius:14px;padding:16px;margin:13px 0;box-shadow:0 2px 8px #0001}label{display:block;font-weight:600;margin:10px 0 5px}input[type=text],input[type=email]{font:inherit;width:100%;padding:12px;border:1px solid #9aaab5;border-radius:8px}button,.btn{display:inline-block;background:#1164a0;color:#fff;border:0;border-radius:9px;padding:12px 14px;font:inherit;margin:5px 4px 5px 0;cursor:pointer}button:disabled{background:#a0aeb9;cursor:default}.secondary{background:#496a80}.danger{background:#9e4040}.hidden{display:none!important}.muted{color:#536a7b}.ok{color:#167943;font-weight:700}.warn{color:#a5530b;font-weight:700}.preview{max-width:100%;max-height:360px;border-radius:9px;object-fit:contain}.tag{display:inline-block;border-radius:30px;background:#e4eff7;padding:5px 10px;margin:4px 0}.nav{display:flex;flex-wrap:wrap;gap:5px}.nav button{flex:1}.checkboxrow{display:flex;align-items:center;gap:9px;padding:9px 0;font-weight:500}.checkboxrow input{width:21px;height:21px}#photoList{max-height:240px;overflow:auto;padding:0;list-style:none}#photoList li{padding:6px 0;border-bottom:1px solid #eee}#status,#sharestatus{white-space:pre-wrap} .batch{border:1px solid #dae3eb;padding:12px;border-radius:9px;margin:10px 0} .tiny{font-size:.85rem}
 
 /* V4: kleine iPhone-Displays, direkte Navigation */
@@ -21,8 +21,14 @@ html{scroll-behavior:auto}body{padding:8px 10px 25px}section{padding:12px;margin
 #vinCropHelp{background:#e7f2ff;padding:10px;border-radius:8px;font-size:.9rem}
 #vinCropWrap.busy{opacity:.6;pointer-events:none}
 #vinOcrStatus{white-space:pre-wrap}
+#vinDiagnostics{border:2px solid #b7cad9;border-radius:10px;padding:10px;margin:10px 0;background:#f6faff}
+#vinDiagnostics pre{white-space:pre-wrap;overflow-wrap:anywhere;background:white;border:1px solid #cbd9e5;padding:9px;border-radius:6px;max-height:200px;overflow:auto;font:13px ui-monospace,monospace}
+#vinSuggestions button{display:block;width:100%;text-align:left;overflow-wrap:anywhere;background:#e3f1ff;color:#12456a;border:1px solid #94b9d5}
+#vinSuggestions .partial{background:#fff1d5;color:#754509;border-color:#dfac50}
+#vinCells input.unknown{background:#fff0c5;border-color:#b47712}
+
 </style></head><body>
-<h1>Fahrzeugfotos – Version 7</h1><p class="muted tiny">Geführte Aufnahme · Apple Mail</p>
+<h1>Fahrzeugfotos – Version 8</h1><p class="muted tiny">Geführte Aufnahme · Apple Mail</p>
 <section id="setup"><label for="fin">Fahrgestellnummer (17 Zeichen)</label><input id="fin" type="text" maxlength="17" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="FIN eingeben"><details id="vinPhotoDetails"><summary>FIN fotografieren und automatisch erkennen (OCR)</summary>
 <p class="muted tiny">Für die FIN hinter der Windschutzscheibe: Spiegelungen vermeiden, Kamera möglichst dicht an die Scheibe halten und auf die Schrift fokussieren.</p>
 <label class="btn" for="vinCamera">FIN-Foto aufnehmen / auswählen</label><input id="vinCamera" class="hidden" type="file" accept="image/*" capture="environment">
@@ -31,7 +37,10 @@ html{scroll-behavior:auto}body{padding:8px 10px 25px}section{padding:12px;margin
 <div id="vinCropWrap"><canvas id="vinCropCanvas" aria-label="FIN-Foto: mit dem Finger den Schriftbereich markieren"></canvas><div id="vinCropSelection"></div></div>
 <div id="vinCropControls"><button id="vinResetCrop" type="button" class="secondary">Rahmen zurücksetzen</button><button id="vinRecognize" type="button">Ausschnitt erkennen</button></div>
 <label for="vinCropPreview">Ausgewählter Bereich (Vorschau)</label><img id="vinCropPreview" alt="Ausgeschnittener FIN-Bereich" class="hidden">
-</div><p id="vinOcrStatus" class="muted tiny" role="status" aria-live="polite"></p></details>
+</div><p id="vinOcrStatus" class="muted tiny" role="status" aria-live="polite"></p>
+<div id="vinDiagnostics" class="hidden"><strong>OCR-Diagnose: Was wurde wirklich erkannt?</strong>
+<p class="muted tiny">Die Texte der drei Erkennungsversuche werden unten angezeigt. Ein Vorschlag wird nur nach Ihrem Tippen übernommen. Bitte die 17 Zeichen immer mit dem Fahrzeug vergleichen.</p>
+<div id="vinSuggestions"></div><details open><summary>OCR-Rohtexte anzeigen</summary><pre id="vinRawText"></pre></details></div></details>
 <label>FIN-Zeichen einzeln prüfen und korrigieren</label><div id="vinCells" aria-label="17 einzelne FIN-Zeichen"></div>
 <p class="muted tiny">Sie können die FIN auch oben vollständig eintippen oder aus Apples „Live Text“ einfügen. Die 17 Felder werden automatisch ausgefüllt.</p>
 <p class="muted tiny">Bitte nur ein Fahrzeug gleichzeitig bearbeiten. Eine begonnene FIN kann nach erneutem Öffnen fortgesetzt werden.</p><button id="start">Fahrzeug beginnen / fortsetzen</button><p id="finstatus" role="status"></p></section>
@@ -90,7 +99,7 @@ vinCanvas.addEventListener('pointerup',finishVinDrag);vinCanvas.addEventListener
 $('vinResetCrop').onclick=()=>{if(!vinSource)return;setVinSelection({x:0,y:0,w:1,h:1});showCropPreview();$('vinOcrStatus').textContent='Rahmen zurueckgesetzt. Ziehen Sie einen engeren Rahmen um die FIN.'};
 $('vinCamera').addEventListener('change',async e=>{
  const f=e.target.files?.[0];if(!f)return;
- const status=$('vinOcrStatus');status.textContent='Foto wird geladen. Anschliessend bitte die FIN mit dem Finger markieren.';
+ $('vinDiagnostics').classList.add('hidden');const status=$('vinOcrStatus');status.textContent='Foto wird geladen. Anschliessend bitte die FIN mit dem Finger markieren.';
  try{
   const url=URL.createObjectURL(f),img=new Image();
   try{await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=()=>reject(new Error('Foto kann nicht gelesen werden.'));img.src=url});
@@ -108,10 +117,35 @@ function ocrVariant(source,mode){const targetW=Math.max(800,Math.min(3000,source
   for(let i=0;i<p.length;i+=4){const v=.299*p[i]+.587*p[i+1]+.114*p[i+2];const adjusted=mode==='threshold'?(v>128?255:0):clamp((v-128)*1.8+128,0,255);p[i]=p[i+1]=p[i+2]=adjusted}ctx.putImageData(d,0,0)
  }return c;
 }
+function vinDiagnosticOptions(raw){
+ const options=new Map();
+ for(const text of raw){
+  for(const line of text.split(/\r?\n/)){
+   const groups=(line.toUpperCase().match(/[A-Z0-9]+/g)||[]);
+   const variants=[...groups,groups.join('')];
+   for(const v of variants){
+    if(v.length<10||v.length>20)continue;
+    if(!options.has(v))options.set(v,{value:v,valid:validVIN(v),count:0});
+    options.get(v).count++;
+   }
+  }
+ }
+ return [...options.values()].sort((a,b)=>Number(b.valid)-Number(a.valid)||Math.abs(a.value.length-17)-Math.abs(b.value.length-17)||b.count-a.count).slice(0,8);
+}
+function renderVinDiagnostics(raw,ocrError=''){
+ const panel=$('vinDiagnostics');panel.classList.remove('hidden');
+ $('vinRawText').textContent=raw.map((t,i)=>['Kontrast','Schwarz-Weiss','Original'][i]+':\n'+(t.trim()||'[kein Text erkannt]')).join('\n\n---\n\n')+(ocrError?'\nFehler: '+ocrError:'');
+ const area=$('vinSuggestions');area.replaceChildren();const options=vinDiagnosticOptions(raw);
+ if(!options.length){const p=document.createElement('p');p.textContent='Keine brauchbare Zeichenfolge erkannt. Bitte FIN manuell eingeben oder Apples Live Text verwenden.';area.append(p);return}
+ const title=document.createElement('p');title.textContent='Erkannte Zeichenfolgen (zum Übernehmen antippen):';area.append(title);
+ for(const opt of options){const btn=document.createElement('button');btn.type='button';btn.className=opt.valid?'':'partial';btn.textContent=opt.value+' ('+opt.value.length+'/17 Zeichen'+(opt.valid?', Aufbau plausibel':', unvollständig/prüfen')+')';
+  btn.onclick=()=>{fillVinBoxes(opt.value);vinBoxes.forEach((el,i)=>el.classList.toggle('unknown',i>=opt.value.length));$('vinOcrStatus').textContent='OCR-Vorschlag übernommen. '+(opt.value.length===17?'Bitte jedes Zeichen am Fahrzeug prüfen.':'Nur '+opt.value.length+' Zeichen erkannt. Gelbe Felder fehlen. Die Zuordnung der Zeichenpositionen kann falsch sein; bitte alle Stellen prüfen und korrigieren.');$('vinCells').scrollIntoView({block:'center',behavior:'instant'})};area.append(btn)
+ }
+}
 $('vinRecognize').onclick=async()=>{
  const status=$('vinOcrStatus');if(!vinSelection||!vinSource){status.textContent='Bitte zuerst einen Rahmen um die FIN ziehen.';return}
- if(vinBusy)return;vinBusy=true;$('vinRecognize').disabled=true;$('vinCropWrap').classList.add('busy');
- let worker=null;
+ if(vinBusy)return;vinBusy=true;$('vinRecognize').disabled=true;$('vinCropWrap').classList.add('busy');$('vinDiagnostics').classList.add('hidden');
+ let worker=null;const raw=[];
  try{
   status.textContent='OCR-Modul wird geladen. Beim ersten Mal ist Internet erforderlich …';await loadOcrScript();
   worker=await Tesseract.createWorker('eng',1,{logger:m=>{if(m.status==='recognizing text')status.textContent='Texterkennung: '+Math.round((m.progress||0)*100)+' %'}});
@@ -119,14 +153,15 @@ $('vinRecognize').onclick=async()=>{
   const crop=cropCanvas();let candidates=[];
   for(const mode of ['contrast','threshold','color']){
    status.textContent='FIN-Erkennung ('+({contrast:'Kontrast',threshold:'Schwarz-Weiss',color:'Original'}[mode])+') …';
-   const result=await worker.recognize(ocrVariant(crop,mode));const candidate=chooseVinFromOcr(result.data.text||'');if(candidate)candidates.push(candidate);
+   const result=await worker.recognize(ocrVariant(crop,mode));const txt=result.data.text||'';raw.push(txt);
+   const candidate=chooseVinFromOcr(txt);if(candidate)candidates.push(candidate);
   }
-  const counts=new Map();for(const c of candidates)counts.set(c,(counts.get(c)||0)+1);
-  const sorted=[...counts].sort((a,b)=>b[1]-a[1]);
-  if(sorted.length===1){fillVinBoxes(sorted[0][0]);status.textContent='FIN-Vorschlag: '+sorted[0][0]+' – Bitte alle 17 Stellen am Fahrzeug kontrollieren und ggf. korrigieren.'}
-  else if(sorted.length>1){status.textContent='Die Erkennung liefert unterschiedliche FIN-Vorschlaege ('+sorted.map(x=>x[0]).join(' / ')+'). Aus Sicherheitsgruenden wurde nichts automatisch uebernommen. Bitte Rahmen enger setzen oder FIN manuell eingeben.'}
-  else{status.textContent='Keine eindeutige 17-stellige FIN erkannt. Bitte den Rahmen enger um die Schrift ziehen, Spiegelung vermeiden oder FIN manuell eingeben. Vorhandene Eingaben wurden nicht veraendert.'}
- }catch(err){status.textContent='OCR nicht verfuegbar: '+err.message+'. Sie koennen die FIN weiterhin manuell eingeben oder mit Apple Live Text einfuegen.'}
+  renderVinDiagnostics(raw);
+  const unique=[...new Set(candidates)];
+  if(unique.length===1){status.textContent='Plausible FIN erkannt: '+unique[0]+'. Bitte unten auf den Vorschlag tippen und alle Zeichen kontrollieren.'}
+  else if(unique.length>1){status.textContent='Unterschiedliche FIN-Vorschläge erkannt. Bitte die Rohtexte vergleichen und einen Vorschlag auswählen oder manuell korrigieren.'}
+  else{status.textContent='Keine eindeutige 17-stellige FIN erkannt. Unten stehen jetzt die tatsächlichen OCR-Ergebnisse und gegebenenfalls unvollständige Vorschläge. Es wurde nichts automatisch übernommen.'}
+ }catch(err){renderVinDiagnostics(raw,err.message);status.textContent='OCR nicht verfügbar oder abgebrochen: '+err.message+'. FIN kann weiterhin manuell eingegeben werden.'}
  finally{if(worker)try{await worker.terminate()}catch(_){}vinBusy=false;$('vinRecognize').disabled=false;$('vinCropWrap').classList.remove('busy')}
 };
 function current(){return activeTasks()[Math.min(step,activeTasks().length-1)]}
