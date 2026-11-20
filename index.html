@@ -1,64 +1,34 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#123c5b"><link rel="manifest" href="manifest.webmanifest"><title>Fahrzeugfotos V9</title><style>
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#123c5b"><link rel="manifest" href="manifest.webmanifest"><title>Fahrzeugfotos V10</title><style>
 *{box-sizing:border-box}body{font:16px system-ui,-apple-system,sans-serif;max-width:680px;margin:auto;padding:14px;background:#f2f6fa;color:#153349}h1{font-size:1.5rem;margin:10px 0}h2{font-size:1.2rem}section{background:white;border-radius:14px;padding:16px;margin:13px 0;box-shadow:0 2px 8px #0001}label{display:block;font-weight:600;margin:10px 0 5px}input[type=text],input[type=email]{font:inherit;width:100%;padding:12px;border:1px solid #9aaab5;border-radius:8px}button,.btn{display:inline-block;background:#1164a0;color:#fff;border:0;border-radius:9px;padding:12px 14px;font:inherit;margin:5px 4px 5px 0;cursor:pointer}button:disabled{background:#a0aeb9;cursor:default}.secondary{background:#496a80}.danger{background:#9e4040}.hidden{display:none!important}.muted{color:#536a7b}.ok{color:#167943;font-weight:700}.warn{color:#a5530b;font-weight:700}.preview{max-width:100%;max-height:360px;border-radius:9px;object-fit:contain}.tag{display:inline-block;border-radius:30px;background:#e4eff7;padding:5px 10px;margin:4px 0}.nav{display:flex;flex-wrap:wrap;gap:5px}.nav button{flex:1}.checkboxrow{display:flex;align-items:center;gap:9px;padding:9px 0;font-weight:500}.checkboxrow input{width:21px;height:21px}#photoList{max-height:240px;overflow:auto;padding:0;list-style:none}#photoList li{padding:6px 0;border-bottom:1px solid #eee}#status,#sharestatus{white-space:pre-wrap} .batch{border:1px solid #dae3eb;padding:12px;border-radius:9px;margin:10px 0} .tiny{font-size:.85rem}
 
 /* V4: kleine iPhone-Displays, direkte Navigation */
 html{scroll-behavior:auto}body{padding:8px 10px 25px}section{padding:12px;margin:9px 0}h1{font-size:1.3rem;margin:6px 0}#work{scroll-margin-top:4px}#work h2{font-size:1.15rem;line-height:1.25;margin:7px 0}#work p{margin:7px 0}#work .btn{display:block;text-align:center;font-weight:700;padding:15px 10px;margin:9px 0}#work .nav{display:flex;flex-wrap:nowrap}#work .nav button{width:50%;margin:2px;padding:13px 6px}#preview img{max-height:26vh}#photoList{max-height:none;overflow:visible;margin:8px 0;padding:0}#photoList li{list-style:none;padding:0;border:0}#photoList button{width:100%;text-align:left;background:#eaf1f7;color:#183d57;margin:3px 0;padding:10px;border:1px solid #d1dee7;font-size:.92rem}#photoList button.missing{background:#fff1df;border-color:#c78132}#photoList button.present{background:#e8f5ed;border-color:#79b68f}#photoList button.current{outline:3px solid #176ca7}#missingJump button{display:block;width:100%;text-align:left;background:#fff1df;color:#703e09;border:1px solid #d49c57;margin:6px 0;padding:11px}#quickNav{display:flex;gap:7px}#quickNav button{flex:1;margin:3px 0}details{margin:8px 0}summary{cursor:pointer;font-weight:650;padding:9px 0}.sticky-tools{position:sticky;top:0;z-index:2;background:#f2f6fa;padding:5px 0}#result{scroll-margin-top:5px}@media(max-width:420px){#work .tag{font-size:.82rem}#work .preview{max-height:23vh}button{font-size:.95rem}}
 
-/* V6: optionale Aufgaben, VIN-Einzelkorrektur */
+/* V10: klare FIN-Eingabe */
 #work.optional-task{background:#fff4c2;border:3px solid #d47b00}
-#work.optional-task #rule{background:#b84500;color:white;border-radius:9px;padding:12px;font-size:1.08rem;font-weight:850;letter-spacing:.025em}
+#work.optional-task #rule{background:#b84500;color:white;border-radius:9px;padding:12px;font-size:1.08rem;font-weight:850}
 #work.optional-task #hint{font-weight:750;color:#743600}
-#vinCells{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:4px;margin:10px 0}
-#vinCells input{width:100%;min-width:0;text-align:center;font-size:1.15rem;font-weight:700;padding:10px 0;border:2px solid #9baebd;border-radius:7px;text-transform:uppercase;background:#fff}
+#landing{min-height:calc(100dvh - 38px);display:flex;align-items:center;justify-content:center;background:#fff;box-shadow:none;margin:0;padding:20px}
+#logoStart{background:transparent;border:0;padding:14px;margin:0;width:min(85vw,340px);display:flex;flex-direction:column;align-items:center;gap:18px;color:#234b75}
+#logoStart img{display:block;width:100%;height:auto;object-fit:contain}
+#logoStart span{font-weight:650;font-size:1rem}
+#setup{scroll-margin-top:8px}
+#setup h1{margin:2px 0 16px;text-align:center;font-size:1.4rem}
+#vinCells{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;margin:14px 0 12px}
+#vinCells input{width:100%;min-width:0;min-height:55px;text-align:center;font-size:1.35rem;font-weight:750;padding:8px 0;border:2px solid #9baebd;border-radius:8px;text-transform:uppercase;background:#fff}
 #vinCells input:focus{border-color:#126ba8;outline:2px solid #126ba8}
 #vinCells input.invalid{border-color:#c03232;background:#fff1ee}
-#vinCropWrap{position:relative;width:100%;touch-action:none;user-select:none;border:2px solid #7891a3;border-radius:10px;overflow:hidden;background:#1b2934;line-height:0}
-#vinCropCanvas{display:block;width:100%;height:auto;touch-action:none}
-#vinCropSelection{position:absolute;border:3px solid #ffb300;background:#ffb30022;box-shadow:0 0 0 999px #0005;pointer-events:none;display:none}
-#vinCropControls{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0}
-#vinCropControls button{flex:1}
-#vinCropPreview{width:100%;max-height:145px;object-fit:contain;background:#26313b;border-radius:8px}
-#vinCropHelp{background:#e7f2ff;padding:10px;border-radius:8px;font-size:.9rem}
-#vinCropWrap.busy{opacity:.6;pointer-events:none}
-#vinOcrStatus{white-space:pre-wrap}
-#vinDiagnostics{border:2px solid #b7cad9;border-radius:10px;padding:10px;margin:10px 0;background:#f6faff}
-#vinDiagnostics pre{white-space:pre-wrap;overflow-wrap:anywhere;background:white;border:1px solid #cbd9e5;padding:9px;border-radius:6px;max-height:200px;overflow:auto;font:13px ui-monospace,monospace}
-#vinSuggestions button{display:block;width:100%;text-align:left;overflow-wrap:anywhere;background:#e3f1ff;color:#12456a;border:1px solid #94b9d5}
-#vinSuggestions .partial{background:#fff1d5;color:#754509;border-color:#dfac50}
-#vinCells input.unknown{background:#fff0c5;border-color:#b47712}
-
-/* V9: direkte Kamera mit festem FIN-Rahmen */
-#vinLiveArea{margin:10px 0;background:#162531;color:#fff;border-radius:12px;padding:10px}
-#vinLiveViewport{position:relative;width:100%;aspect-ratio:4/3;background:#000;overflow:hidden;border-radius:9px}
-#vinLiveVideo{position:absolute;width:100%;height:100%;object-fit:cover;inset:0}
-#vinLiveGuide{position:absolute;left:5%;top:41%;width:90%;height:18%;border:3px solid #ffcc26;border-radius:7px;box-shadow:0 0 0 100vmax #0005;pointer-events:none}
-#vinLiveGuide:before{content:'17 Zeichen innerhalb dieses Rahmens';position:absolute;bottom:calc(100% + 8px);left:0;right:0;text-align:center;color:#fff;font-size:.85rem;font-weight:750;text-shadow:0 1px 4px #000}
-#vinLiveControls{display:flex;gap:7px;margin-top:8px}#vinLiveControls button{flex:1;margin:0;padding:14px 6px}
-#vinCapturedArea{margin:10px 0}#vinCapturedArea img{display:block;width:100%;max-height:140px;object-fit:contain;background:#152532;border-radius:8px}
-#vinLiveNote{font-size:.86rem;color:#fff5c5;margin:7px 0}
+#vinCells input:nth-child(13){margin-top:19px}
+#vinCells input:nth-child(n+14){margin-top:19px}
+#vinString{display:block;text-align:center;font:700 1.06rem ui-monospace,monospace;letter-spacing:.03em;overflow-wrap:anywhere;padding:10px;background:#edf4fa;border-radius:8px}
+#start{display:block;width:100%;margin:14px 0;padding:15px;font-weight:700}
+#finstatus{font-size:.9rem}
 </style></head><body>
-<h1>Fahrzeugfotos – Version 9</h1><p class="muted tiny">Geführte Aufnahme · Apple Mail</p>
-<section id="setup"><label for="fin">Fahrgestellnummer (17 Zeichen)</label><input id="fin" type="text" maxlength="17" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="FIN eingeben"><details id="vinPhotoDetails"><summary>FIN mit Kamerarahmen erfassen (OCR)</summary>
-<p class="muted tiny">FIN hinter der Windschutzscheibe: Kamera möglichst ruhig halten, Spiegelungen vermeiden und die ganze Zeichenfolge in den gelben Rahmen bringen.</p>
-<button id="vinStartLive" type="button">Kamera mit FIN-Rahmen öffnen</button>
-<div id="vinLiveArea" class="hidden">
- <div id="vinLiveViewport"><video id="vinLiveVideo" autoplay muted playsinline webkit-playsinline></video><div id="vinLiveGuide"></div></div>
- <p id="vinLiveNote">Die gesamte FIN im gelben Rahmen ausrichten. Bei Bedarf näher herangehen und auf die Schrift tippen, um die Kamera zu fokussieren.</p>
- <div id="vinLiveControls"><button id="vinCaptureLive" type="button">Foto aufnehmen</button><button id="vinStopLive" type="button" class="secondary">Abbrechen</button></div>
-</div>
-<p class="muted tiny">Falls die Live-Kamera nicht startet, können Sie alternativ ein Foto auswählen:</p>
-<label class="btn secondary" for="vinCamera">Foto auswählen (Alternative)</label><input id="vinCamera" class="hidden" type="file" accept="image/*" capture="environment">
-<div id="vinCapturedArea" class="hidden"><strong>Automatisch erfasster FIN-Bereich:</strong><img id="vinCropPreview" alt="FIN-Ausschnitt"><button id="vinRecognize" type="button">FIN jetzt erkennen</button><button id="vinRetake" class="secondary" type="button">Erneut fotografieren</button></div>
-<p id="vinOcrStatus" class="muted tiny" role="status" aria-live="polite"></p>
-<div id="vinDiagnostics" class="hidden"><strong>OCR-Diagnose: Was wurde wirklich erkannt?</strong>
-<p class="muted tiny">Die Texte der drei Erkennungsversuche werden unten angezeigt. Ein Vorschlag wird nur nach Ihrem Tippen übernommen. Bitte die 17 Zeichen immer mit dem Fahrzeug vergleichen.</p>
-<div id="vinSuggestions"></div><details open><summary>OCR-Rohtexte anzeigen</summary><pre id="vinRawText"></pre></details></div></details>
-<label>FIN-Zeichen einzeln prüfen und korrigieren</label><div id="vinCells" aria-label="17 einzelne FIN-Zeichen"></div>
-<p class="muted tiny">Sie können die FIN auch oben vollständig eintippen oder aus Apples „Live Text“ einfügen. Die 17 Felder werden automatisch ausgefüllt.</p>
-<p class="muted tiny">Bitte nur ein Fahrzeug gleichzeitig bearbeiten. Eine begonnene FIN kann nach erneutem Öffnen fortgesetzt werden.</p><button id="start">Fahrzeug beginnen / fortsetzen</button><p id="finstatus" role="status"></p></section>
+<section id="landing"><button id="logoStart" type="button" aria-label="Fahrzeugfotos starten"><img src="logo.jpg" alt="Gaul und Klamt Logo"><span>Zum Starten Logo antippen</span></button></section>
+<section id="setup" class="hidden"><h1>Fahrgestellnummer</h1><div id="vinCells" aria-label="17 FIN-Zeichen einzeln eingeben"></div><div id="vinString" aria-live="polite">—</div><button id="start" type="button">Fahrzeug beginnen</button><p id="finstatus" role="status"></p></section>
 <section id="work" class="hidden"><div class="tag" id="counter"></div><h2 id="title"></h2><p id="rule" class="muted"></p><p id="hint"></p><label class="btn" for="camera">Kamera öffnen / Foto auswählen</label><input id="camera" type="file" accept="image/*" capture="environment" class="hidden"><div id="preview"></div><p id="photoStatus"></p><div class="nav"><button id="back" class="secondary">Zurück</button><button id="next">Weiter</button></div><div id="quickNav"><button id="overview" class="secondary">Bildübersicht</button><button id="finish" class="secondary">Prüfen / Abschluss</button></div><details><summary>Hinweise anzeigen</summary><p class="muted tiny">Optionale Bilder können übersprungen werden. Bei Schäden sind Bild 40–43 Pflicht.</p></details></section>
 <section id="result" class="hidden"><h2>Abschluss und E-Mail</h2><p id="summary"></p><p id="missing" class="warn"></p><div id="missingJump"></div><button id="backToPhoto" class="secondary">Zur Fotoaufnahme</button><p><strong>Fester Empfänger:</strong> <span id="recipientLabel">Einstellungen werden geladen …</span></p><p><strong>Betreff:</strong> <span id="subjectLabel">–</span></p><button id="copyRecipient" class="secondary" type="button">Empfängeradresse kopieren</button><p id="configStatus" class="muted tiny" role="status"></p><p class="muted tiny">Apple Mail wird über „Teilen“ geöffnet. Die Anhänge werden übergeben; Empfänger und Betreff können von Safari nicht zuverlässig in Apple Mail eingetragen werden. Bitte die angezeigte Adresse und den Betreff kontrollieren bzw. einfügen.</p><button id="prepare">E-Mail-Anhänge vorbereiten</button><p id="prepareStatus" role="status"></p><div id="batches"></div><button id="mail" class="secondary">Mail mit festem Empfänger öffnen (OHNE Anhänge)</button><button id="restart" class="secondary">Weiteres Fahrzeug beginnen</button><p class="warn tiny">Bitte erst nach Kontrolle der tatsächlich gesendeten E-Mails ein neues Fahrzeug beginnen. Die Anwendung kann den Versand nicht bestätigen.</p></section>
-<section id="overviewSection"><details id="overviewDetails"><summary>Bildübersicht öffnen – direkt zu jedem Bild springen</summary><p class="muted tiny">Tippen Sie auf eine Bildnummer, um sie sofort aufzurufen. Gelb = Pflichtfoto fehlt, Grün = vorhanden.</p><ul id="photoList"></ul></details></section>
+<section id="overviewSection" class="hidden"><details id="overviewDetails"><summary>Bildübersicht öffnen – direkt zu jedem Bild springen</summary><p class="muted tiny">Tippen Sie auf eine Bildnummer, um sie sofort aufzurufen. Gelb = Pflichtfoto fehlt, Grün = vorhanden.</p><ul id="photoList"></ul></details></section>
 <section><strong>Testhinweise</strong><p class="muted tiny">Bitte auf der öffentlichen GitHub-Testseite nur Testdaten und unkritische Fotos verwenden. iOS kann Browserdaten bei Speichermangel löschen. Eine bestehende Fahrzeugaufnahme nicht durch Leeren der Safari-Websitedaten entfernen. Für echten Einsatz sind Offline- und Langzeittests erforderlich.</p><p id="status" class="muted tiny"></p></section>
 <script>
 const TASKS=[{"n":1,"title":"Armaturendisplay mit KM-Stand und Ladezustand (BEV/Hybrid)","rule":"pflicht"},{"n":2,"title":"Rad mit Reifendaten (Hersteller, Größe, Traglast etc.)","rule":"pflicht"},{"n":3,"title":"Reifenprofil","rule":"pflicht"},{"n":4,"title":"Schlüsselcode und Schlüsselnummer","rule":"pflicht"},{"n":5,"title":"Alle angelieferten Schlüssel","rule":"pflicht"},{"n":6,"title":"Felgenschloss-Pass","rule":"wo_vorhanden"},{"n":7,"title":"Typenschild Standheizung","rule":"wo_verbaut"},{"n":8,"title":"Typenschild Westfalia Mobil","rule":"nur_nugget"},{"n":9,"title":"Kofferraum mit Reifenreparaturset/Ersatzrad und ggf. Ladekabel","rule":"pflicht"},{"n":10,"title":"Kofferraum: beigelegte Teile (Fußmatten, Radkappen etc.)","rule":"wo_beigelegt"},{"n":11,"title":"Abnehmbare Anhängerkupplung: Kugelkopf","rule":"wo_verbaut"},{"n":12,"title":"Schlüssel mit Schlüsselnummer des abnehmbaren Kugelkopfes","rule":"wo_verbaut"},{"n":13,"title":"Typenschild Anhängerkupplung","rule":"wo_verbaut"},{"n":20,"title":"Fahrzeugfront von links","rule":"pflicht"},{"n":21,"title":"Fahrzeugfront frontal von unten nach oben mit komplettem Stoßfänger","rule":"pflicht"},{"n":22,"title":"Fahrzeugfront Motorhaube und Windschutzscheibe","rule":"pflicht"},{"n":23,"title":"Fahrzeug von vorn rechts","rule":"pflicht"},{"n":24,"title":"Fahrzeugseite von vorn rechts","rule":"pflicht"},{"n":25,"title":"Fahrzeugheck von rechts","rule":"pflicht"},{"n":26,"title":"Fahrzeugheck frontal von unten nach oben mit komplettem Stoßfänger","rule":"pflicht"},{"n":27,"title":"Fahrzeugheck mit Heckklappe und Heckscheibe","rule":"pflicht"},{"n":28,"title":"Fahrzeugheck von links","rule":"pflicht"},{"n":29,"title":"Fahrzeugseite von hinten links","rule":"pflicht"},{"n":30,"title":"Fahrzeugdach","rule":"pflicht"},{"n":37,"title":"Lieferschein nach Unterschrift","rule":"pflicht"},{"n":40,"title":"Transportschaden aus 2 Meter Entfernung","rule":"bei_schaden"},{"n":41,"title":"Transportschaden Detailaufnahme 1","rule":"bei_schaden"},{"n":42,"title":"Transportschaden Detailaufnahme 2","rule":"bei_schaden"},{"n":43,"title":"Kennzeichen des anliefernden LKW","rule":"bei_schaden"}];
@@ -74,133 +44,46 @@ function dbGet(k){return new Promise((ok,no)=>{const t=db.transaction(STORE,'rea
 function dbDelete(k){return new Promise((ok,no)=>{const t=db.transaction(STORE,'readwrite');t.objectStore(STORE).delete(k);t.oncomplete=()=>ok();t.onerror=()=>no(t.error)})}
 function setStatus(s){$('status').textContent=s}
 const vinBoxes=[];
-function fillVinBoxes(value){const chars=value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,17);vinBoxes.forEach((el,i)=>{el.value=chars[i]||'';el.classList.toggle('invalid',!!el.value&&/[IOQ]/.test(el.value))});$('fin').value=chars}
+function finAsString(){return vinBoxes.map(el=>el.value).join('')}
+function updateFin(){
+ const value=finAsString();
+ $('vinString').textContent=value||'—';
+ $('finstatus').textContent=value.length===17?(validVIN(value)?'17 Zeichen vollständig.':'Bitte rot markierte Zeichen korrigieren.'):`${value.length} von 17 Zeichen eingegeben.`;
+}
+function setVinFromText(value){
+ const clean=String(value||'').toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,17);
+ vinBoxes.forEach((el,i)=>{el.value=clean[i]||'';el.classList.toggle('invalid',!!el.value&&/[IOQ]/.test(el.value))});
+ updateFin();
+}
+function focusVin(i,fromDigit){
+ const el=vinBoxes[i];if(!el)return;
+ // iOS entscheidet selbst, ob beim Fokuswechsel die Tastatur umschaltet.
+ el.inputMode=fromDigit?'numeric':'text';
+ el.focus();
+}
 for(let i=0;i<17;i++){
- const el=document.createElement('input');el.type='text';el.maxLength=1;el.autocomplete='off';el.autocapitalize='characters';el.spellcheck=false;el.inputMode='text';el.setAttribute('aria-label',`FIN-Zeichen ${i+1} von 17`);
- el.addEventListener('input',()=>{const v=el.value.toUpperCase().replace(/[^A-Z0-9]/g,'');if(v.length>1){fillVinBoxes(vinBoxes.slice(0,i).map(x=>x.value).join('')+v+vinBoxes.slice(i+1).map(x=>x.value).join(''));return}el.value=v;el.classList.toggle('invalid',/[IOQ]/.test(v));$('fin').value=vinBoxes.map(x=>x.value).join('');if(v&&i<16)vinBoxes[i+1].focus()});
- el.addEventListener('keydown',e=>{if(e.key==='Backspace'&&!el.value&&i>0)vinBoxes[i-1].focus()});
- el.addEventListener('paste',e=>{const text=e.clipboardData?.getData('text')||'';if(text.length>1){e.preventDefault();fillVinBoxes(text)}});
- vinBoxes.push(el);$('vinCells').append(el)
-}
-$('fin').addEventListener('input',()=>fillVinBoxes($('fin').value));
-function chooseVinFromOcr(text){
- // Nur komplette, plausible 17-Zeichen-FINs. Keine beliebigen 17 Zeichen aus Fliesstext!
- const lines=String(text||'').toUpperCase().split(/\r?\n/);
- const candidates=[];
- for(const line of lines){
-   const tokens=line.match(/[A-Z0-9]+/g)||[];
-   for(const token of tokens){if(validVIN(token))candidates.push(token)}
-   // Getrennte Gruppen sind moeglich, aber nur wenn die ganze Zeile genau 17 Zeichen enthaelt.
-   const compact=tokens.join('');if(validVIN(compact))candidates.push(compact);
- }
- const unique=[...new Set(candidates)];return unique.length===1?unique[0]:'';
-}
-let ocrLoading=null;
-function loadOcrScript(){if(window.Tesseract)return Promise.resolve();if(ocrLoading)return ocrLoading;ocrLoading=new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js';script.onload=resolve;script.onerror=()=>reject(new Error('OCR-Modul konnte nicht geladen werden. Internetverbindung prüfen.'));document.head.append(script)}).catch(e=>{ocrLoading=null;throw e});return ocrLoading}
-let vinSource=null,vinSelection=null,vinBusy=false,vinStream=null;
-function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
-function cropCanvas(){if(!vinSource||!vinSelection)return null;const r=vinSelection;const w=Math.max(1,Math.round(vinSource.width*r.w)),h=Math.max(1,Math.round(vinSource.height*r.h));const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(vinSource,Math.round(vinSource.width*r.x),Math.round(vinSource.height*r.y),w,h,0,0,w,h);return c}
-function showCropPreview(){const c=cropCanvas();if(!c)return;$('vinCropPreview').src=c.toDataURL('image/jpeg',.92);$('vinCapturedArea').classList.remove('hidden');$('vinCapturedArea').scrollIntoView({block:'nearest',behavior:'instant'})}
-function stopVinLive(){if(vinStream){vinStream.getTracks().forEach(t=>t.stop());vinStream=null}const video=$('vinLiveVideo');video.pause();video.srcObject=null;$('vinLiveArea').classList.add('hidden')}
-$('vinStartLive').onclick=async()=>{
- if(vinBusy)return;stopVinLive();$('vinDiagnostics').classList.add('hidden');$('vinCapturedArea').classList.add('hidden');
- const status=$('vinOcrStatus');status.textContent='Kamera wird gestartet …';
- if(!navigator.mediaDevices?.getUserMedia){status.textContent='Live-Kamera wird in diesem Browser nicht unterstützt. Bitte die Foto-Alternative verwenden.';return}
- try{
-  vinStream=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:'environment'},width:{ideal:1920},height:{ideal:1080}}});
-  const video=$('vinLiveVideo');video.srcObject=vinStream;$('vinLiveArea').classList.remove('hidden');await video.play();status.textContent='FIN innerhalb des gelben Rahmens ausrichten und auf „Foto aufnehmen“ tippen.';
-  $('vinLiveArea').scrollIntoView({block:'start',behavior:'instant'});
- }catch(err){stopVinLive();status.textContent='Kamera konnte nicht gestartet werden ('+err.name+'). Bitte Safari-Kameraberechtigung prüfen oder Foto-Alternative verwenden.'}
-};
-$('vinStopLive').onclick=()=>{stopVinLive();$('vinOcrStatus').textContent='Kamera geschlossen.'};
-$('vinCaptureLive').onclick=()=>{
- const video=$('vinLiveVideo');if(!vinStream||!video.videoWidth||!video.videoHeight){$('vinOcrStatus').textContent='Kamera noch nicht bereit.';return}
- // Video wird mit object-fit:cover angezeigt. Den sichtbaren Rahmen exakt auf die Sensorkoordinaten abbilden.
- const box=$('vinLiveViewport').getBoundingClientRect(),guide=$('vinLiveGuide').getBoundingClientRect();
- const vw=video.videoWidth,vh=video.videoHeight,bw=box.width,bh=box.height;
- const scale=Math.max(bw/vw,bh/vh),drawW=vw*scale,drawH=vh*scale;
- const offsetX=(drawW-bw)/2,offsetY=(drawH-bh)/2;
- const gx=guide.left-box.left,gy=guide.top-box.top;
- const x=clamp((gx+offsetX)/scale,0,vw-1),y=clamp((gy+offsetY)/scale,0,vh-1);
- const w=clamp(guide.width/scale,1,vw-x),h=clamp(guide.height/scale,1,vh-y);
- // Nur den Rahmen plus schmalen Rand übernehmen, damit die Schrift nicht abgeschnitten wird.
- const marginX=w*.025,marginY=h*.16;
- const sx=Math.max(0,x-marginX),sy=Math.max(0,y-marginY),ex=Math.min(vw,x+w+marginX),ey=Math.min(vh,y+h+marginY);
- const c=document.createElement('canvas');c.width=Math.round(ex-sx);c.height=Math.round(ey-sy);
- c.getContext('2d').drawImage(video,sx,sy,ex-sx,ey-sy,0,0,c.width,c.height);
- vinSource=c;vinSelection={x:0,y:0,w:1,h:1};stopVinLive();$('vinDiagnostics').classList.add('hidden');showCropPreview();
- $('vinOcrStatus').textContent='FIN-Ausschnitt aufgenommen. Bitte prüfen und „FIN jetzt erkennen“ tippen.';
-};
-$('vinRetake').onclick=()=>{$('vinStartLive').click()};
-$('vinCamera').addEventListener('change',async e=>{
- const f=e.target.files?.[0];if(!f)return;
- $('vinDiagnostics').classList.add('hidden');const status=$('vinOcrStatus');status.textContent='Foto wird geladen …';
- try{
-  const url=URL.createObjectURL(f),img=new Image();
-  try{await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=()=>reject(new Error('Foto kann nicht gelesen werden.'));img.src=url});
-   const max=2400,scale=Math.min(1,max/Math.max(img.naturalWidth,img.naturalHeight));
-   const c=document.createElement('canvas');c.width=Math.round(img.naturalWidth*scale);c.height=Math.round(img.naturalHeight*scale);c.getContext('2d').drawImage(img,0,0,c.width,c.height);vinSource=c;
-   // Alternative: mittleren horizontalen Bildstreifen nehmen; manuelle FIN-Eingabe bleibt möglich.
-   vinSelection={x:.06,y:.36,w:.88,h:.28};showCropPreview();status.textContent='Alternatives Foto: mittlerer Bildbereich gewählt. Für präzisen Zuschnitt bitte die Live-Kamera mit gelbem Rahmen nutzen.';
-  }finally{URL.revokeObjectURL(url)}
- }catch(err){status.textContent='Foto konnte nicht geöffnet werden: '+err.message}
- finally{e.target.value=''}
-});
-window.addEventListener('pagehide',stopVinLive);
-document.addEventListener('visibilitychange',()=>{if(document.hidden)stopVinLive()});
-function ocrVariant(source,mode){const targetW=Math.max(1400,Math.min(2800,source.width*4));const scale=targetW/source.width;const c=document.createElement('canvas');c.width=Math.round(source.width*scale);c.height=Math.round(source.height*scale);const ctx=c.getContext('2d',{willReadFrequently:true});ctx.drawImage(source,0,0,c.width,c.height);
- if(mode!=='color'){
-  const d=ctx.getImageData(0,0,c.width,c.height),p=d.data;
-  for(let i=0;i<p.length;i+=4){const v=.299*p[i]+.587*p[i+1]+.114*p[i+2];const adjusted=mode==='threshold'?(v>128?255:0):clamp((v-128)*1.8+128,0,255);p[i]=p[i+1]=p[i+2]=adjusted}ctx.putImageData(d,0,0)
- }return c;
-}
-function vinDiagnosticOptions(raw){
- const options=new Map();
- for(const text of raw){
-  for(const line of text.split(/\r?\n/)){
-   const groups=(line.toUpperCase().match(/[A-Z0-9]+/g)||[]);
-   const variants=[...groups,groups.join('')];
-   for(const v of variants){
-    if(v.length<10||v.length>20)continue;
-    if(!options.has(v))options.set(v,{value:v,valid:validVIN(v),count:0});
-    options.get(v).count++;
-   }
+ const el=document.createElement('input');
+ el.type='text';el.maxLength=1;el.autocomplete='off';el.autocapitalize='characters';el.spellcheck=false;el.inputMode='text';
+ el.setAttribute('aria-label',`FIN Zeichen ${i+1} von 17`);
+ el.addEventListener('input',()=>{
+  const raw=el.value.toUpperCase().replace(/[^A-Z0-9]/g,'');
+  if(raw.length>1){
+   const rest=raw.slice(0,17-i);
+   for(let j=0;j<rest.length;j++){vinBoxes[i+j].value=rest[j];vinBoxes[i+j].classList.toggle('invalid',/[IOQ]/.test(rest[j]))}
+   updateFin();focusVin(Math.min(16,i+rest.length),/^[0-9]$/.test(rest.at(-1)));return;
   }
- }
- return [...options.values()].sort((a,b)=>Number(b.valid)-Number(a.valid)||Math.abs(a.value.length-17)-Math.abs(b.value.length-17)||b.count-a.count).slice(0,8);
+  el.value=raw;el.classList.toggle('invalid',/[IOQ]/.test(raw));updateFin();
+  if(raw&&i<16)focusVin(i+1,/^[0-9]$/.test(raw));
+ });
+ el.addEventListener('keydown',e=>{if(e.key==='Backspace'&&!el.value&&i>0){e.preventDefault();focusVin(i-1,/^[0-9]$/.test(vinBoxes[i-2]?.value||''))}});
+ el.addEventListener('paste',e=>{
+  const text=e.clipboardData?.getData('text')||'';
+  if(text.length>1){e.preventDefault();setVinFromText(text);focusVin(Math.min(16,text.length),/^[0-9]$/.test(text.at(-1)))}
+ });
+ vinBoxes.push(el);$('vinCells').append(el);
 }
-function renderVinDiagnostics(raw,ocrError=''){
- const panel=$('vinDiagnostics');panel.classList.remove('hidden');
- $('vinRawText').textContent=raw.map((t,i)=>['Kontrast','Schwarz-Weiss','Original'][i]+':\n'+(t.trim()||'[kein Text erkannt]')).join('\n\n---\n\n')+(ocrError?'\nFehler: '+ocrError:'');
- const area=$('vinSuggestions');area.replaceChildren();const options=vinDiagnosticOptions(raw);
- if(!options.length){const p=document.createElement('p');p.textContent='Keine brauchbare Zeichenfolge erkannt. Bitte FIN manuell eingeben oder Apples Live Text verwenden.';area.append(p);return}
- const title=document.createElement('p');title.textContent='Erkannte Zeichenfolgen (zum Übernehmen antippen):';area.append(title);
- for(const opt of options){const btn=document.createElement('button');btn.type='button';btn.className=opt.valid?'':'partial';btn.textContent=opt.value+' ('+opt.value.length+'/17 Zeichen'+(opt.valid?', Aufbau plausibel':', unvollständig/prüfen')+')';
-  btn.onclick=()=>{fillVinBoxes(opt.value);vinBoxes.forEach((el,i)=>el.classList.toggle('unknown',i>=opt.value.length));$('vinOcrStatus').textContent='OCR-Vorschlag übernommen. '+(opt.value.length===17?'Bitte jedes Zeichen am Fahrzeug prüfen.':'Nur '+opt.value.length+' Zeichen erkannt. Gelbe Felder fehlen. Die Zuordnung der Zeichenpositionen kann falsch sein; bitte alle Stellen prüfen und korrigieren.');$('vinCells').scrollIntoView({block:'center',behavior:'instant'})};area.append(btn)
- }
-}
-$('vinRecognize').onclick=async()=>{
- const status=$('vinOcrStatus');if(!vinSelection||!vinSource){status.textContent='Bitte zuerst die FIN mit dem gelben Kamerarahmen fotografieren.';return}
- if(vinBusy)return;vinBusy=true;$('vinRecognize').disabled=true;$('vinCapturedArea').classList.add('busy');$('vinDiagnostics').classList.add('hidden');
- let worker=null;const raw=[];
- try{
-  status.textContent='OCR-Modul wird geladen. Beim ersten Mal ist Internet erforderlich …';await loadOcrScript();
-  worker=await Tesseract.createWorker('eng',1,{logger:m=>{if(m.status==='recognizing text')status.textContent='Texterkennung: '+Math.round((m.progress||0)*100)+' %'}});
-  await worker.setParameters({tessedit_char_whitelist:'ABCDEFGHJKLMNPRSTUVWXYZ0123456789',tessedit_pageseg_mode:'7',preserve_interword_spaces:'0'});
-  const crop=cropCanvas();if(!crop)throw new Error('Kein FIN-Ausschnitt vorhanden.');let candidates=[];
-  for(const mode of ['contrast','threshold','color']){
-   status.textContent='FIN-Erkennung ('+({contrast:'Kontrast',threshold:'Schwarz-Weiss',color:'Original'}[mode])+') …';
-   const result=await worker.recognize(ocrVariant(crop,mode));const txt=result.data.text||'';raw.push(txt);
-   const candidate=chooseVinFromOcr(txt);if(candidate)candidates.push(candidate);
-  }
-  renderVinDiagnostics(raw);
-  const unique=[...new Set(candidates)];
-  if(unique.length===1){status.textContent='Plausible FIN erkannt: '+unique[0]+'. Bitte unten auf den Vorschlag tippen und alle Zeichen kontrollieren.'}
-  else if(unique.length>1){status.textContent='Unterschiedliche FIN-Vorschläge erkannt. Bitte die Rohtexte vergleichen und einen Vorschlag auswählen oder manuell korrigieren.'}
-  else{status.textContent='Keine eindeutige 17-stellige FIN erkannt. Unten stehen jetzt die tatsächlichen OCR-Ergebnisse und gegebenenfalls unvollständige Vorschläge. Es wurde nichts automatisch übernommen.'}
- }catch(err){renderVinDiagnostics(raw,err.message);status.textContent='OCR nicht verfügbar oder abgebrochen: '+err.message+'. FIN kann weiterhin manuell eingegeben werden.'}
- finally{if(worker)try{await worker.terminate()}catch(_){}vinBusy=false;$('vinRecognize').disabled=false;$('vinCapturedArea').classList.remove('busy')}
-};
+$('logoStart').onclick=()=>{$('landing').classList.add('hidden');$('setup').classList.remove('hidden');window.scrollTo(0,0);};
+updateFin();
 function current(){return activeTasks()[Math.min(step,activeTasks().length-1)]}
 function ruleText(t){if(isRequired(t))return 'Pflichtfoto';if(t.rule==='nur_nugget')return 'Optional – nur bei Nugget';if(t.rule==='wo_vorhanden')return 'Optional – falls vorhanden';if(t.rule==='wo_verbaut')return 'Optional – falls verbaut';if(t.rule==='wo_beigelegt')return 'Optional – falls Teile beigelegt';return 'Optional'}
 function jumpTo(n){const arr=activeTasks();const i=arr.findIndex(t=>t.n===n);if(i<0)return;step=i;$('work').classList.remove('hidden');$('result').classList.add('hidden');$('overviewDetails').open=false;showStep();window.scrollTo({top:0,behavior:'instant'});$('work').scrollIntoView({block:'start',behavior:'instant'})}
@@ -208,7 +91,7 @@ function renderList(){const ul=$('photoList');ul.replaceChildren();for(const t o
 function showStep(){const arr=activeTasks();step=Math.max(0,Math.min(step,arr.length-1));const t=current();$('counter').textContent=`Foto ${step+1} von ${arr.length} · FIN ${vin}`;$('title').textContent=`Bild ${t.n}: ${t.title}`;$('rule').textContent=ruleText(t);$('work').classList.toggle('optional-task',!isRequired(t));$('hint').textContent=isRequired(t)?'Dieses Foto muss aufgenommen werden. Nach dem Speichern geht es automatisch weiter.':'OPTIONAL: Nur aufnehmen, wenn zutreffend; sonst auf Weiter tippen.';const p=$('preview');p.replaceChildren();if(objectURL){URL.revokeObjectURL(objectURL);objectURL=null}if(photos[t.n]){const im=document.createElement('img');objectURL=URL.createObjectURL(photos[t.n]);im.src=objectURL;im.className='preview';im.alt='Aufgenommenes Bild';p.append(im)}$('photoStatus').textContent=photos[t.n]?'✓ Foto gespeichert. Bei erneuter Aufnahme wird es ersetzt.':'Noch kein Foto vorhanden.';$('back').disabled=step===0;$('next').disabled=step===arr.length-1;renderList()}
 function missing(){return activeTasks().filter(t=>isRequired(t)&&!photos[t.n])}
 function showResult(){const m=missing();$('result').classList.remove('hidden');$('summary').textContent=`FIN ${vin} · ${Object.keys(photos).filter(n=>activeTasks().some(t=>t.n===Number(n))).length} Fotos aufgenommen · ${m.length} Pflichtbilder fehlen.`;$('missing').textContent=m.length?'Bitte diese Pflichtbilder noch aufnehmen:':'Alle Pflichtbilder vorhanden.';const jumps=$('missingJump');jumps.replaceChildren();for(const t of m){const b=document.createElement('button');b.textContent=`Bild ${t.n}: ${t.title}  ›`;b.onclick=()=>jumpTo(t.n);jumps.append(b)}$('prepare').disabled=!!m.length||!mailSettings;$('prepareStatus').textContent='';$('batches').replaceChildren();readyBatches=[];$('result').scrollIntoView({behavior:'instant',block:'start'})}
-async function loadVehicle(){if(!db){alert('Lokaler Fotospeicher noch nicht bereit.');return}const s=$('fin').value.trim().toUpperCase();if(!validVIN(s)){$('finstatus').textContent='Bitte genau 17 Zeichen (ohne I, O, Q) eingeben.';return}vin=s;photos={};readyBatches=[];damageChoice=(await dbGet(vin+'_damage'))===true;for(const t of TASKS){const b=await dbGet(key(t.n));if(b)photos[t.n]=b}if(damageChoice===false){for(const n of SPECIAL){delete photos[n]}}$('finstatus').textContent='Aktives Fahrzeug: '+vin;$('work').classList.remove('hidden');$('result').classList.add('hidden');step=0;showStep();$('work').scrollIntoView({behavior:'instant',block:'start'})}
+async function loadVehicle(){if(!db){alert('Lokaler Fotospeicher noch nicht bereit.');return}const s=finAsString();if(!validVIN(s)){$('finstatus').textContent='Bitte genau 17 Zeichen (ohne I, O, Q) eingeben.';return}vin=s;photos={};readyBatches=[];damageChoice=(await dbGet(vin+'_damage'))===true;for(const t of TASKS){const b=await dbGet(key(t.n));if(b)photos[t.n]=b}if(damageChoice===false){for(const n of SPECIAL){delete photos[n]}}$('finstatus').textContent='Aktives Fahrzeug: '+vin;$('work').classList.remove('hidden');$('overviewSection').classList.remove('hidden');$('setup').classList.add('hidden');$('result').classList.add('hidden');step=0;showStep();$('work').scrollIntoView({behavior:'instant',block:'start'})}
 $('start').onclick=()=>loadVehicle().catch(e=>alert('Laden fehlgeschlagen: '+e.message));
 $('camera').onchange=async e=>{const f=e.target.files&&e.target.files[0];if(!f)return;try{const n=current().n;const blob=new Blob([await f.arrayBuffer()],{type:f.type||'image/jpeg'});await dbPut(key(n),blob);photos[n]=blob;readyBatches=[];$('result').classList.add('hidden');showStep();if(step<activeTasks().length-1){step++;showStep();$('work').scrollIntoView({behavior:'instant',block:'start'})}else{$('finish').click()}}catch(err){alert('Foto konnte nicht gespeichert werden: '+err.message)}finally{e.target.value=''}};
 $('back').onclick=()=>{step--;showStep();$('work').scrollIntoView({behavior:'instant',block:'start'})};$('next').onclick=()=>{step++;showStep();$('work').scrollIntoView({behavior:'instant',block:'start'})};$('overview').onclick=()=>{$('overviewDetails').open=true;renderList();$('overviewSection').scrollIntoView({behavior:'instant',block:'start'})};$('backToPhoto').onclick=()=>jumpTo(current().n);
@@ -239,6 +122,6 @@ function body(i,total,nums){return `Fotodokumentation FIN ${vin}\nTeil ${i} von 
 $('prepare').onclick=async()=>{if(!mailSettings){alert('Einstellungen fehlen. Bitte Seite neu laden.');return}if(missing().length){showResult();return}const status=$('prepareStatus');status.textContent='JPEG-Dateien werden vorbereitet. Bitte warten ...';$('prepare').disabled=true;$('batches').replaceChildren();readyBatches=[];try{const nums=activeTasks().map(t=>t.n).filter(n=>photos[n]);let batch=[],bytes=0;for(let i=0;i<nums.length;i++){const n=nums[i];status.textContent=`Bereite Bild ${n} vor (${i+1}/${nums.length}) ...`;const jpg=await jpegBlob(photos[n]);const f=new File([jpg],jpgName(n),{type:'image/jpeg',lastModified:Date.now()});if(batch.length&&(batch.length>=8||bytes+f.size>7*1024*1024)){readyBatches.push(batch);batch=[];bytes=0}batch.push({n,file:f});bytes+=f.size}if(batch.length)readyBatches.push(batch);status.textContent=`${nums.length} Fotos in ${readyBatches.length} E-Mail-Teil(en) vorbereitet. Bitte jeden Teil einzeln über Apple Mail senden.`;renderBatches()}catch(e){status.textContent='Vorbereitung fehlgeschlagen: '+e.message}finally{$('prepare').disabled=false}};
 function renderBatches(){const target=$('batches');target.replaceChildren();readyBatches.forEach((group,idx)=>{const box=document.createElement('div');box.className='batch';const title=document.createElement('p');title.textContent=`Teil ${idx+1}/${readyBatches.length}: Bilder ${group.map(x=>x.n).join(', ')}`;box.append(title);const btn=document.createElement('button');btn.textContent=`Teil ${idx+1} über Apple Mail teilen`;const info=document.createElement('p');info.className='muted tiny';btn.onclick=async()=>{const files=group.map(x=>x.file);try{if(!navigator.share){info.textContent='Teilen wird in diesem Browser nicht unterstützt.';return}if(navigator.canShare&&!navigator.canShare({files})){info.textContent='Diese Dateien können nicht gemeinsam geteilt werden. Bitte melden Sie die Fehlermeldung.';return}info.textContent='Apple Mail wählen. Empfänger: '+mailSettings.emailEmpfaenger+'; Betreff: '+subject(idx+1,readyBatches.length)+'. Beide Angaben und Anhänge prüfen.';await navigator.share({files,title:subject(idx+1,readyBatches.length),text:body(idx+1,readyBatches.length,group.map(x=>x.n))});info.textContent='Teilen-Dialog geschlossen. Bitte prüfen, ob diese E-Mail tatsächlich gesendet wurde.'}catch(e){info.textContent=e.name==='AbortError'?'Teilen abgebrochen.':'Teilen fehlgeschlagen: '+e.message}};box.append(btn,info);target.append(box)})}
 $('mail').onclick=()=>{if(!mailSettings)return;const nums=activeTasks().map(t=>t.n).filter(n=>photos[n]);location.href='mailto:'+encodeURIComponent(mailSettings.emailEmpfaenger)+'?subject='+encodeURIComponent(subject(1,1))+'&body='+encodeURIComponent(`FIN ${vin}\nBilder: ${nums.join(', ')}\nAchtung: Dieser Weg hat KEINE Anhaenge.`)};
-$('restart').onclick=()=>{if(!confirm('Neues Fahrzeug beginnen? Prüfen Sie vorher, ob alle E-Mails tatsächlich gesendet wurden.'))return;vin='';photos={};damageChoice=null;readyBatches=[];$('work').classList.add('hidden');$('result').classList.add('hidden');$('fin').value='';$('finstatus').textContent='';$('overviewDetails').open=false;renderList();window.scrollTo(0,0)};
+$('restart').onclick=()=>{if(!confirm('Neues Fahrzeug beginnen? Prüfen Sie vorher, ob alle E-Mails tatsächlich gesendet wurden.'))return;vin='';photos={};damageChoice=null;readyBatches=[];$('work').classList.add('hidden');$('result').classList.add('hidden');setVinFromText('');$('work').classList.add('hidden');$('setup').classList.remove('hidden');$('landing').classList.remove('hidden');$('overviewDetails').open=false;$('overviewSection').classList.add('hidden');renderList();window.scrollTo(0,0)};
 (async()=>{await loadMailSettings();try{db=await dbOpen();setStatus('Lokaler Fotospeicher bereit.')}catch(e){setStatus('Lokaler Speicher nicht verfügbar: '+e.message)}if('serviceWorker'in navigator&&location.protocol==='https:'){try{await navigator.serviceWorker.register('./sw.js');setStatus($('status').textContent+' Offline-Dateien eingerichtet.')}catch(e){setStatus($('status').textContent+' Offline-Einrichtung fehlgeschlagen: '+e.message)}}})();
 </script></body></html>
