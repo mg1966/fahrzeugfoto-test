@@ -1,0 +1,149 @@
+{
+  "bilder": [
+    {
+      "nummer": 1,
+      "titel": "Armaturendisplay mit KM-Stand und Ladezustand (BEV/Hybrid)",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 2,
+      "titel": "Rad mit Reifendaten (Hersteller, Größe, Traglast etc.)",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 3,
+      "titel": "Reifenprofil",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 4,
+      "titel": "Schlüsselcode und Schlüsselnummer",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 5,
+      "titel": "Alle angelieferten Schlüssel",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 6,
+      "titel": "Felgenschloss-Pass",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 7,
+      "titel": "Typenschild Standheizung",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 8,
+      "titel": "Typenschild Westfalia Mobil",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 9,
+      "titel": "Kofferraum mit Reifenreparaturset/Ersatzrad und ggf. Ladekabel",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 10,
+      "titel": "Kofferraum: beigelegte Teile (Fußmatten, Radkappen etc.)",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 11,
+      "titel": "Abnehmbare Anhängerkupplung: Kugelkopf",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 12,
+      "titel": "Schlüssel mit Schlüsselnummer des abnehmbaren Kugelkopfes",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 13,
+      "titel": "Typenschild Anhängerkupplung",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 20,
+      "titel": "Fahrzeugfront von links",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 21,
+      "titel": "Fahrzeugfront frontal von unten nach oben mit komplettem Stoßfänger",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 22,
+      "titel": "Fahrzeugfront Motorhaube und Windschutzscheibe",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 23,
+      "titel": "Fahrzeug von vorn rechts",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 24,
+      "titel": "Fahrzeugseite von vorn rechts",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 25,
+      "titel": "Fahrzeugheck von rechts",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 26,
+      "titel": "Fahrzeugheck frontal von unten nach oben mit komplettem Stoßfänger",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 27,
+      "titel": "Fahrzeugheck mit Heckklappe und Heckscheibe",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 28,
+      "titel": "Fahrzeugheck von links",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 29,
+      "titel": "Fahrzeugseite von hinten links",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 30,
+      "titel": "Fahrzeugdach",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 37,
+      "titel": "Lieferschein nach Unterschrift",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 40,
+      "titel": "Transportschaden aus 2 Meter Entfernung",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 41,
+      "titel": "Transportschaden Detailaufnahme 1",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 42,
+      "titel": "Transportschaden Detailaufnahme 2",
+      "beschreibung": ""
+    },
+    {
+      "nummer": 43,
+      "titel": "Kennzeichen des anliefernden LKW",
+      "beschreibung": ""
+    }
+  ]
+}
