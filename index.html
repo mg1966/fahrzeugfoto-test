@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#123c5b"><link rel="manifest" href="manifest.webmanifest"><title>Fahrzeugfotos V8</title><style>
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#123c5b"><link rel="manifest" href="manifest.webmanifest"><title>Fahrzeugfotos V9</title><style>
 *{box-sizing:border-box}body{font:16px system-ui,-apple-system,sans-serif;max-width:680px;margin:auto;padding:14px;background:#f2f6fa;color:#153349}h1{font-size:1.5rem;margin:10px 0}h2{font-size:1.2rem}section{background:white;border-radius:14px;padding:16px;margin:13px 0;box-shadow:0 2px 8px #0001}label{display:block;font-weight:600;margin:10px 0 5px}input[type=text],input[type=email]{font:inherit;width:100%;padding:12px;border:1px solid #9aaab5;border-radius:8px}button,.btn{display:inline-block;background:#1164a0;color:#fff;border:0;border-radius:9px;padding:12px 14px;font:inherit;margin:5px 4px 5px 0;cursor:pointer}button:disabled{background:#a0aeb9;cursor:default}.secondary{background:#496a80}.danger{background:#9e4040}.hidden{display:none!important}.muted{color:#536a7b}.ok{color:#167943;font-weight:700}.warn{color:#a5530b;font-weight:700}.preview{max-width:100%;max-height:360px;border-radius:9px;object-fit:contain}.tag{display:inline-block;border-radius:30px;background:#e4eff7;padding:5px 10px;margin:4px 0}.nav{display:flex;flex-wrap:wrap;gap:5px}.nav button{flex:1}.checkboxrow{display:flex;align-items:center;gap:9px;padding:9px 0;font-weight:500}.checkboxrow input{width:21px;height:21px}#photoList{max-height:240px;overflow:auto;padding:0;list-style:none}#photoList li{padding:6px 0;border-bottom:1px solid #eee}#status,#sharestatus{white-space:pre-wrap} .batch{border:1px solid #dae3eb;padding:12px;border-radius:9px;margin:10px 0} .tiny{font-size:.85rem}
 
 /* V4: kleine iPhone-Displays, direkte Navigation */
@@ -27,17 +27,29 @@ html{scroll-behavior:auto}body{padding:8px 10px 25px}section{padding:12px;margin
 #vinSuggestions .partial{background:#fff1d5;color:#754509;border-color:#dfac50}
 #vinCells input.unknown{background:#fff0c5;border-color:#b47712}
 
+/* V9: direkte Kamera mit festem FIN-Rahmen */
+#vinLiveArea{margin:10px 0;background:#162531;color:#fff;border-radius:12px;padding:10px}
+#vinLiveViewport{position:relative;width:100%;aspect-ratio:4/3;background:#000;overflow:hidden;border-radius:9px}
+#vinLiveVideo{position:absolute;width:100%;height:100%;object-fit:cover;inset:0}
+#vinLiveGuide{position:absolute;left:5%;top:41%;width:90%;height:18%;border:3px solid #ffcc26;border-radius:7px;box-shadow:0 0 0 100vmax #0005;pointer-events:none}
+#vinLiveGuide:before{content:'17 Zeichen innerhalb dieses Rahmens';position:absolute;bottom:calc(100% + 8px);left:0;right:0;text-align:center;color:#fff;font-size:.85rem;font-weight:750;text-shadow:0 1px 4px #000}
+#vinLiveControls{display:flex;gap:7px;margin-top:8px}#vinLiveControls button{flex:1;margin:0;padding:14px 6px}
+#vinCapturedArea{margin:10px 0}#vinCapturedArea img{display:block;width:100%;max-height:140px;object-fit:contain;background:#152532;border-radius:8px}
+#vinLiveNote{font-size:.86rem;color:#fff5c5;margin:7px 0}
 </style></head><body>
-<h1>Fahrzeugfotos – Version 8</h1><p class="muted tiny">Geführte Aufnahme · Apple Mail</p>
-<section id="setup"><label for="fin">Fahrgestellnummer (17 Zeichen)</label><input id="fin" type="text" maxlength="17" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="FIN eingeben"><details id="vinPhotoDetails"><summary>FIN fotografieren und automatisch erkennen (OCR)</summary>
-<p class="muted tiny">Für die FIN hinter der Windschutzscheibe: Spiegelungen vermeiden, Kamera möglichst dicht an die Scheibe halten und auf die Schrift fokussieren.</p>
-<label class="btn" for="vinCamera">FIN-Foto aufnehmen / auswählen</label><input id="vinCamera" class="hidden" type="file" accept="image/*" capture="environment">
-<div id="vinCropArea" class="hidden">
-<p id="vinCropHelp">1. Ziehen Sie mit dem Finger einen <strong>engen Rahmen nur um die FIN-Zeichen</strong>. Der Rahmen lässt sich jederzeit neu ziehen. 2. Tippen Sie auf „Ausschnitt erkennen“.</p>
-<div id="vinCropWrap"><canvas id="vinCropCanvas" aria-label="FIN-Foto: mit dem Finger den Schriftbereich markieren"></canvas><div id="vinCropSelection"></div></div>
-<div id="vinCropControls"><button id="vinResetCrop" type="button" class="secondary">Rahmen zurücksetzen</button><button id="vinRecognize" type="button">Ausschnitt erkennen</button></div>
-<label for="vinCropPreview">Ausgewählter Bereich (Vorschau)</label><img id="vinCropPreview" alt="Ausgeschnittener FIN-Bereich" class="hidden">
-</div><p id="vinOcrStatus" class="muted tiny" role="status" aria-live="polite"></p>
+<h1>Fahrzeugfotos – Version 9</h1><p class="muted tiny">Geführte Aufnahme · Apple Mail</p>
+<section id="setup"><label for="fin">Fahrgestellnummer (17 Zeichen)</label><input id="fin" type="text" maxlength="17" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="FIN eingeben"><details id="vinPhotoDetails"><summary>FIN mit Kamerarahmen erfassen (OCR)</summary>
+<p class="muted tiny">FIN hinter der Windschutzscheibe: Kamera möglichst ruhig halten, Spiegelungen vermeiden und die ganze Zeichenfolge in den gelben Rahmen bringen.</p>
+<button id="vinStartLive" type="button">Kamera mit FIN-Rahmen öffnen</button>
+<div id="vinLiveArea" class="hidden">
+ <div id="vinLiveViewport"><video id="vinLiveVideo" autoplay muted playsinline webkit-playsinline></video><div id="vinLiveGuide"></div></div>
+ <p id="vinLiveNote">Die gesamte FIN im gelben Rahmen ausrichten. Bei Bedarf näher herangehen und auf die Schrift tippen, um die Kamera zu fokussieren.</p>
+ <div id="vinLiveControls"><button id="vinCaptureLive" type="button">Foto aufnehmen</button><button id="vinStopLive" type="button" class="secondary">Abbrechen</button></div>
+</div>
+<p class="muted tiny">Falls die Live-Kamera nicht startet, können Sie alternativ ein Foto auswählen:</p>
+<label class="btn secondary" for="vinCamera">Foto auswählen (Alternative)</label><input id="vinCamera" class="hidden" type="file" accept="image/*" capture="environment">
+<div id="vinCapturedArea" class="hidden"><strong>Automatisch erfasster FIN-Bereich:</strong><img id="vinCropPreview" alt="FIN-Ausschnitt"><button id="vinRecognize" type="button">FIN jetzt erkennen</button><button id="vinRetake" class="secondary" type="button">Erneut fotografieren</button></div>
+<p id="vinOcrStatus" class="muted tiny" role="status" aria-live="polite"></p>
 <div id="vinDiagnostics" class="hidden"><strong>OCR-Diagnose: Was wurde wirklich erkannt?</strong>
 <p class="muted tiny">Die Texte der drei Erkennungsversuche werden unten angezeigt. Ein Vorschlag wird nur nach Ihrem Tippen übernommen. Bitte die 17 Zeichen immer mit dem Fahrzeug vergleichen.</p>
 <div id="vinSuggestions"></div><details open><summary>OCR-Rohtexte anzeigen</summary><pre id="vinRawText"></pre></details></div></details>
@@ -85,33 +97,58 @@ function chooseVinFromOcr(text){
 }
 let ocrLoading=null;
 function loadOcrScript(){if(window.Tesseract)return Promise.resolve();if(ocrLoading)return ocrLoading;ocrLoading=new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js';script.onload=resolve;script.onerror=()=>reject(new Error('OCR-Modul konnte nicht geladen werden. Internetverbindung prüfen.'));document.head.append(script)}).catch(e=>{ocrLoading=null;throw e});return ocrLoading}
-let vinSource=null,vinSelection=null,vinDragging=null,vinBusy=false;
-const vinCanvas=$('vinCropCanvas'),vinSelectionBox=$('vinCropSelection');
+let vinSource=null,vinSelection=null,vinBusy=false,vinStream=null;
 function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
-function canvasPos(e){const r=vinCanvas.getBoundingClientRect();return {x:clamp((e.clientX-r.left)/r.width,0,1),y:clamp((e.clientY-r.top)/r.height,0,1)}}
-function setVinSelection(rect){vinSelection=rect;const b=vinSelectionBox;if(!rect){b.style.display='none';return}b.style.display='block';b.style.left=(rect.x*100)+'%';b.style.top=(rect.y*100)+'%';b.style.width=(rect.w*100)+'%';b.style.height=(rect.h*100)+'%'}
 function cropCanvas(){if(!vinSource||!vinSelection)return null;const r=vinSelection;const w=Math.max(1,Math.round(vinSource.width*r.w)),h=Math.max(1,Math.round(vinSource.height*r.h));const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(vinSource,Math.round(vinSource.width*r.x),Math.round(vinSource.height*r.y),w,h,0,0,w,h);return c}
-function showCropPreview(){const c=cropCanvas();const img=$('vinCropPreview');if(c){img.src=c.toDataURL('image/jpeg',.85);img.classList.remove('hidden')}else img.classList.add('hidden')}
-vinCanvas.addEventListener('pointerdown',e=>{if(!vinSource||vinBusy)return;e.preventDefault();vinCanvas.setPointerCapture(e.pointerId);vinDragging=canvasPos(e);setVinSelection(null)});
-vinCanvas.addEventListener('pointermove',e=>{if(!vinDragging||vinBusy)return;e.preventDefault();const p=canvasPos(e),a=vinDragging;setVinSelection({x:Math.min(a.x,p.x),y:Math.min(a.y,p.y),w:Math.abs(p.x-a.x),h:Math.abs(p.y-a.y)})});
-function finishVinDrag(){if(!vinDragging)return;vinDragging=null;if(vinSelection&&(vinSelection.w<.025||vinSelection.h<.015)){setVinSelection(null);$('vinOcrStatus').textContent='Bitte einen etwas groesseren Rahmen um die Schrift ziehen.'}showCropPreview()}
-vinCanvas.addEventListener('pointerup',finishVinDrag);vinCanvas.addEventListener('pointercancel',finishVinDrag);
-$('vinResetCrop').onclick=()=>{if(!vinSource)return;setVinSelection({x:0,y:0,w:1,h:1});showCropPreview();$('vinOcrStatus').textContent='Rahmen zurueckgesetzt. Ziehen Sie einen engeren Rahmen um die FIN.'};
+function showCropPreview(){const c=cropCanvas();if(!c)return;$('vinCropPreview').src=c.toDataURL('image/jpeg',.92);$('vinCapturedArea').classList.remove('hidden');$('vinCapturedArea').scrollIntoView({block:'nearest',behavior:'instant'})}
+function stopVinLive(){if(vinStream){vinStream.getTracks().forEach(t=>t.stop());vinStream=null}const video=$('vinLiveVideo');video.pause();video.srcObject=null;$('vinLiveArea').classList.add('hidden')}
+$('vinStartLive').onclick=async()=>{
+ if(vinBusy)return;stopVinLive();$('vinDiagnostics').classList.add('hidden');$('vinCapturedArea').classList.add('hidden');
+ const status=$('vinOcrStatus');status.textContent='Kamera wird gestartet …';
+ if(!navigator.mediaDevices?.getUserMedia){status.textContent='Live-Kamera wird in diesem Browser nicht unterstützt. Bitte die Foto-Alternative verwenden.';return}
+ try{
+  vinStream=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:'environment'},width:{ideal:1920},height:{ideal:1080}}});
+  const video=$('vinLiveVideo');video.srcObject=vinStream;$('vinLiveArea').classList.remove('hidden');await video.play();status.textContent='FIN innerhalb des gelben Rahmens ausrichten und auf „Foto aufnehmen“ tippen.';
+  $('vinLiveArea').scrollIntoView({block:'start',behavior:'instant'});
+ }catch(err){stopVinLive();status.textContent='Kamera konnte nicht gestartet werden ('+err.name+'). Bitte Safari-Kameraberechtigung prüfen oder Foto-Alternative verwenden.'}
+};
+$('vinStopLive').onclick=()=>{stopVinLive();$('vinOcrStatus').textContent='Kamera geschlossen.'};
+$('vinCaptureLive').onclick=()=>{
+ const video=$('vinLiveVideo');if(!vinStream||!video.videoWidth||!video.videoHeight){$('vinOcrStatus').textContent='Kamera noch nicht bereit.';return}
+ // Video wird mit object-fit:cover angezeigt. Den sichtbaren Rahmen exakt auf die Sensorkoordinaten abbilden.
+ const box=$('vinLiveViewport').getBoundingClientRect(),guide=$('vinLiveGuide').getBoundingClientRect();
+ const vw=video.videoWidth,vh=video.videoHeight,bw=box.width,bh=box.height;
+ const scale=Math.max(bw/vw,bh/vh),drawW=vw*scale,drawH=vh*scale;
+ const offsetX=(drawW-bw)/2,offsetY=(drawH-bh)/2;
+ const gx=guide.left-box.left,gy=guide.top-box.top;
+ const x=clamp((gx+offsetX)/scale,0,vw-1),y=clamp((gy+offsetY)/scale,0,vh-1);
+ const w=clamp(guide.width/scale,1,vw-x),h=clamp(guide.height/scale,1,vh-y);
+ // Nur den Rahmen plus schmalen Rand übernehmen, damit die Schrift nicht abgeschnitten wird.
+ const marginX=w*.025,marginY=h*.16;
+ const sx=Math.max(0,x-marginX),sy=Math.max(0,y-marginY),ex=Math.min(vw,x+w+marginX),ey=Math.min(vh,y+h+marginY);
+ const c=document.createElement('canvas');c.width=Math.round(ex-sx);c.height=Math.round(ey-sy);
+ c.getContext('2d').drawImage(video,sx,sy,ex-sx,ey-sy,0,0,c.width,c.height);
+ vinSource=c;vinSelection={x:0,y:0,w:1,h:1};stopVinLive();$('vinDiagnostics').classList.add('hidden');showCropPreview();
+ $('vinOcrStatus').textContent='FIN-Ausschnitt aufgenommen. Bitte prüfen und „FIN jetzt erkennen“ tippen.';
+};
+$('vinRetake').onclick=()=>{$('vinStartLive').click()};
 $('vinCamera').addEventListener('change',async e=>{
  const f=e.target.files?.[0];if(!f)return;
- $('vinDiagnostics').classList.add('hidden');const status=$('vinOcrStatus');status.textContent='Foto wird geladen. Anschliessend bitte die FIN mit dem Finger markieren.';
+ $('vinDiagnostics').classList.add('hidden');const status=$('vinOcrStatus');status.textContent='Foto wird geladen …';
  try{
   const url=URL.createObjectURL(f),img=new Image();
   try{await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=()=>reject(new Error('Foto kann nicht gelesen werden.'));img.src=url});
    const max=2400,scale=Math.min(1,max/Math.max(img.naturalWidth,img.naturalHeight));
    const c=document.createElement('canvas');c.width=Math.round(img.naturalWidth*scale);c.height=Math.round(img.naturalHeight*scale);c.getContext('2d').drawImage(img,0,0,c.width,c.height);vinSource=c;
-   const displayW=Math.min(c.width,640),displayH=Math.round(displayW*c.height/c.width);vinCanvas.width=displayW;vinCanvas.height=displayH;vinCanvas.getContext('2d').drawImage(c,0,0,displayW,displayH);
-   $('vinCropArea').classList.remove('hidden');setVinSelection({x:.12,y:.35,w:.76,h:.3});showCropPreview();status.textContent='Ziehen Sie einen Rahmen eng um die 17 FIN-Zeichen. Danach auf „Ausschnitt erkennen“ tippen.';
+   // Alternative: mittleren horizontalen Bildstreifen nehmen; manuelle FIN-Eingabe bleibt möglich.
+   vinSelection={x:.06,y:.36,w:.88,h:.28};showCropPreview();status.textContent='Alternatives Foto: mittlerer Bildbereich gewählt. Für präzisen Zuschnitt bitte die Live-Kamera mit gelbem Rahmen nutzen.';
   }finally{URL.revokeObjectURL(url)}
- }catch(err){status.textContent='Foto konnte nicht geoeffnet werden: '+err.message}
+ }catch(err){status.textContent='Foto konnte nicht geöffnet werden: '+err.message}
  finally{e.target.value=''}
 });
-function ocrVariant(source,mode){const targetW=Math.max(800,Math.min(3000,source.width*3));const scale=targetW/source.width;const c=document.createElement('canvas');c.width=Math.round(source.width*scale);c.height=Math.round(source.height*scale);const ctx=c.getContext('2d',{willReadFrequently:true});ctx.drawImage(source,0,0,c.width,c.height);
+window.addEventListener('pagehide',stopVinLive);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stopVinLive()});
+function ocrVariant(source,mode){const targetW=Math.max(1400,Math.min(2800,source.width*4));const scale=targetW/source.width;const c=document.createElement('canvas');c.width=Math.round(source.width*scale);c.height=Math.round(source.height*scale);const ctx=c.getContext('2d',{willReadFrequently:true});ctx.drawImage(source,0,0,c.width,c.height);
  if(mode!=='color'){
   const d=ctx.getImageData(0,0,c.width,c.height),p=d.data;
   for(let i=0;i<p.length;i+=4){const v=.299*p[i]+.587*p[i+1]+.114*p[i+2];const adjusted=mode==='threshold'?(v>128?255:0):clamp((v-128)*1.8+128,0,255);p[i]=p[i+1]=p[i+2]=adjusted}ctx.putImageData(d,0,0)
@@ -143,14 +180,14 @@ function renderVinDiagnostics(raw,ocrError=''){
  }
 }
 $('vinRecognize').onclick=async()=>{
- const status=$('vinOcrStatus');if(!vinSelection||!vinSource){status.textContent='Bitte zuerst einen Rahmen um die FIN ziehen.';return}
- if(vinBusy)return;vinBusy=true;$('vinRecognize').disabled=true;$('vinCropWrap').classList.add('busy');$('vinDiagnostics').classList.add('hidden');
+ const status=$('vinOcrStatus');if(!vinSelection||!vinSource){status.textContent='Bitte zuerst die FIN mit dem gelben Kamerarahmen fotografieren.';return}
+ if(vinBusy)return;vinBusy=true;$('vinRecognize').disabled=true;$('vinCapturedArea').classList.add('busy');$('vinDiagnostics').classList.add('hidden');
  let worker=null;const raw=[];
  try{
   status.textContent='OCR-Modul wird geladen. Beim ersten Mal ist Internet erforderlich …';await loadOcrScript();
   worker=await Tesseract.createWorker('eng',1,{logger:m=>{if(m.status==='recognizing text')status.textContent='Texterkennung: '+Math.round((m.progress||0)*100)+' %'}});
-  await worker.setParameters({tessedit_char_whitelist:'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',tessedit_pageseg_mode:'7'});
-  const crop=cropCanvas();let candidates=[];
+  await worker.setParameters({tessedit_char_whitelist:'ABCDEFGHJKLMNPRSTUVWXYZ0123456789',tessedit_pageseg_mode:'7',preserve_interword_spaces:'0'});
+  const crop=cropCanvas();if(!crop)throw new Error('Kein FIN-Ausschnitt vorhanden.');let candidates=[];
   for(const mode of ['contrast','threshold','color']){
    status.textContent='FIN-Erkennung ('+({contrast:'Kontrast',threshold:'Schwarz-Weiss',color:'Original'}[mode])+') …';
    const result=await worker.recognize(ocrVariant(crop,mode));const txt=result.data.text||'';raw.push(txt);
@@ -162,7 +199,7 @@ $('vinRecognize').onclick=async()=>{
   else if(unique.length>1){status.textContent='Unterschiedliche FIN-Vorschläge erkannt. Bitte die Rohtexte vergleichen und einen Vorschlag auswählen oder manuell korrigieren.'}
   else{status.textContent='Keine eindeutige 17-stellige FIN erkannt. Unten stehen jetzt die tatsächlichen OCR-Ergebnisse und gegebenenfalls unvollständige Vorschläge. Es wurde nichts automatisch übernommen.'}
  }catch(err){renderVinDiagnostics(raw,err.message);status.textContent='OCR nicht verfügbar oder abgebrochen: '+err.message+'. FIN kann weiterhin manuell eingegeben werden.'}
- finally{if(worker)try{await worker.terminate()}catch(_){}vinBusy=false;$('vinRecognize').disabled=false;$('vinCropWrap').classList.remove('busy')}
+ finally{if(worker)try{await worker.terminate()}catch(_){}vinBusy=false;$('vinRecognize').disabled=false;$('vinCapturedArea').classList.remove('busy')}
 };
 function current(){return activeTasks()[Math.min(step,activeTasks().length-1)]}
 function ruleText(t){if(isRequired(t))return 'Pflichtfoto';if(t.rule==='nur_nugget')return 'Optional – nur bei Nugget';if(t.rule==='wo_vorhanden')return 'Optional – falls vorhanden';if(t.rule==='wo_verbaut')return 'Optional – falls verbaut';if(t.rule==='wo_beigelegt')return 'Optional – falls Teile beigelegt';return 'Optional'}
