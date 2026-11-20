@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#ffffff"><link rel="manifest" href="manifest.webmanifest"><title>Fahrzeugfotos V16</title><style>
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#ffffff"><link rel="manifest" href="manifest.webmanifest"><title>Fahrzeugfotos V17</title><style>
 *{box-sizing:border-box}body{font:16px system-ui,-apple-system,sans-serif;max-width:680px;margin:auto;padding:14px;background:#f2f6fa;color:#153349}h1{font-size:1.5rem;margin:10px 0}h2{font-size:1.2rem}section{background:white;border-radius:14px;padding:16px;margin:13px 0;box-shadow:0 2px 8px #0001}label{display:block;font-weight:600;margin:10px 0 5px}input[type=text],input[type=email]{font:inherit;width:100%;padding:12px;border:1px solid #9aaab5;border-radius:8px}button,.btn{display:inline-block;background:#1164a0;color:#fff;border:0;border-radius:9px;padding:12px 14px;font:inherit;margin:5px 4px 5px 0;cursor:pointer}button:disabled{background:#a0aeb9;cursor:default}.secondary{background:#496a80}.danger{background:#9e4040}.hidden{display:none!important}.muted{color:#536a7b}.ok{color:#167943;font-weight:700}.warn{color:#a5530b;font-weight:700}.preview{max-width:100%;max-height:360px;border-radius:9px;object-fit:contain}.tag{display:inline-block;border-radius:30px;background:#e4eff7;padding:5px 10px;margin:4px 0}.nav{display:flex;flex-wrap:wrap;gap:5px}.nav button{flex:1}.checkboxrow{display:flex;align-items:center;gap:9px;padding:9px 0;font-weight:500}.checkboxrow input{width:21px;height:21px}#photoList{max-height:240px;overflow:auto;padding:0;list-style:none}#photoList li{padding:6px 0;border-bottom:1px solid #eee}#status,#sharestatus{white-space:pre-wrap} .batch{border:1px solid #dae3eb;padding:12px;border-radius:9px;margin:10px 0} .tiny{font-size:.85rem}
 
 /* V4: kleine iPhone-Displays, direkte Navigation */
@@ -61,38 +61,47 @@ section{background:#fff;box-shadow:none;border:0;border-radius:0;padding:12px 3p
 #work:not(.optional-task) #rule{display:block;width:100%;text-align:center;background:#c81e28;color:#fff;border:2px solid #a3111c;border-radius:12px;padding:13px 14px;font-size:1.15rem;font-weight:900;letter-spacing:.03em;box-shadow:0 2px 5px #0002}
 #work:not(.optional-task) #rule.photo-done{background:#087c3c;border-color:#05632f;color:#fff}
 </style></head><body>
-<section id="landing"><button id="logoStart" type="button" aria-label="Fahrzeugfotos starten"><img src="logo.jpg" alt="Gaul und Klamt Logo"><span>Zum Starten Logo antippen</span></button><small id="versionLabel">Version 16</small></section>
-<section id="setup" class="hidden"><h1>Fahrgestellnummer</h1><div id="vinCells" aria-label="17 FIN-Zeichen einzeln eingeben"></div><div id="vinString" aria-live="polite">—</div><button id="start" type="button">Fahrzeug beginnen</button><p id="finstatus" role="status"></p></section>
+<section id="landing"><button id="logoStart" type="button" aria-label="Fahrzeugfotos starten"><img src="logo.jpg" alt="Gaul und Klamt Logo"><span>Zum Starten Logo antippen</span></button><small id="versionLabel">Version 17</small></section>
+<section id="setup" class="hidden"><h1>Fahrgestellnummer</h1><div id="vinCells" aria-label="17 FIN-Zeichen einzeln eingeben"></div><div id="vinString" aria-live="polite">—</div><button id="start" type="button" disabled>Fahrzeug beginnen</button><p id="finstatus" role="status"></p></section>
 <section id="work" class="hidden"><div class="tag" id="counter"></div><h2 id="title"></h2><p id="rule" class="muted"></p><p id="hint"></p><p id="description"></p><label class="btn" for="camera">Foto aufnehmen</label><input id="camera" type="file" accept="image/*" capture="environment" class="hidden"><div id="preview"></div><p id="photoStatus"></p><div class="nav"><button id="back" class="secondary">Zurück</button><button id="next">Weiter</button></div><div id="quickNav"><button id="overview" class="secondary">Alle Bilder</button><button id="finish" class="secondary">Abschluss</button></div><details><summary>Hinweise anzeigen</summary><p class="muted tiny">Optionale Bilder können übersprungen werden.</p></details></section>
 <section id="result" class="hidden"><h2>Versand</h2><p id="summary"></p><p id="missing" class="warn"></p><div id="missingJump"></div><button id="backToPhoto" class="secondary">Zur Fotoaufnahme</button><button id="prepare" type="button">ZIP-Datei erstellen</button><p id="prepareStatus" role="status"></p><div id="mailDetails"><p class="tiny muted">Empfänger</p><p><strong id="recipientLabel">Einstellungen werden geladen …</strong></p></div><button id="sendMail" type="button">Mail senden</button><p id="configStatus" class="muted tiny" role="status"></p><button id="restart" class="secondary">Weiteres Fahrzeug beginnen</button></section>
 <section id="overviewSection" class="hidden"><details id="overviewDetails"><summary>Bildübersicht öffnen – direkt zu jedem Bild springen</summary><p class="muted tiny">Tippen Sie auf eine Bildnummer, um sie sofort aufzurufen. Gelb = Pflichtfoto fehlt, Grün = vorhanden.</p><ul id="photoList"></ul></details></section>
 <section id="testNotes"><strong>Testhinweise</strong><p class="muted tiny">Bitte auf der öffentlichen GitHub-Testseite nur Testdaten und unkritische Fotos verwenden. iOS kann Browserdaten bei Speichermangel löschen. Eine bestehende Fahrzeugaufnahme nicht durch Leeren der Safari-Websitedaten entfernen. Für echten Einsatz sind Offline- und Langzeittests erforderlich.</p><p id="status" class="muted tiny"></p></section>
 <script>
-const TASKS=[{"n":1,"title":"Armaturendisplay mit KM-Stand und Ladezustand (BEV/Hybrid)","rule":"pflicht"},{"n":2,"title":"Rad mit Reifendaten (Hersteller, Größe, Traglast etc.)","rule":"pflicht"},{"n":3,"title":"Reifenprofil","rule":"pflicht"},{"n":4,"title":"Schlüsselcode und Schlüsselnummer","rule":"pflicht"},{"n":5,"title":"Alle angelieferten Schlüssel","rule":"pflicht"},{"n":6,"title":"Felgenschloss-Pass","rule":"wo_vorhanden"},{"n":7,"title":"Typenschild Standheizung","rule":"wo_verbaut"},{"n":8,"title":"Typenschild Westfalia Mobil","rule":"nur_nugget"},{"n":9,"title":"Kofferraum mit Reifenreparaturset/Ersatzrad und ggf. Ladekabel","rule":"pflicht"},{"n":10,"title":"Kofferraum: beigelegte Teile (Fußmatten, Radkappen etc.)","rule":"wo_beigelegt"},{"n":11,"title":"Abnehmbare Anhängerkupplung: Kugelkopf","rule":"wo_verbaut"},{"n":12,"title":"Schlüssel mit Schlüsselnummer des abnehmbaren Kugelkopfes","rule":"wo_verbaut"},{"n":13,"title":"Typenschild Anhängerkupplung","rule":"wo_verbaut"},{"n":20,"title":"Fahrzeugfront von links","rule":"pflicht"},{"n":21,"title":"Fahrzeugfront frontal von unten nach oben mit komplettem Stoßfänger","rule":"pflicht"},{"n":22,"title":"Fahrzeugfront Motorhaube und Windschutzscheibe","rule":"pflicht"},{"n":23,"title":"Fahrzeug von vorn rechts","rule":"pflicht"},{"n":24,"title":"Fahrzeugseite von vorn rechts","rule":"pflicht"},{"n":25,"title":"Fahrzeugheck von rechts","rule":"pflicht"},{"n":26,"title":"Fahrzeugheck frontal von unten nach oben mit komplettem Stoßfänger","rule":"pflicht"},{"n":27,"title":"Fahrzeugheck mit Heckklappe und Heckscheibe","rule":"pflicht"},{"n":28,"title":"Fahrzeugheck von links","rule":"pflicht"},{"n":29,"title":"Fahrzeugseite von hinten links","rule":"pflicht"},{"n":30,"title":"Fahrzeugdach","rule":"pflicht"},{"n":37,"title":"Lieferschein nach Unterschrift","rule":"pflicht"}];
-let bildtexteStatus='';
+// Ablauf, Reihenfolge, Nummern und Pflichtstatus kommen ausschliesslich aus bilder.json.
+let TASKS=[];
+let bildtexteStatus='Bildliste wird geladen.';
+let bildlisteBereit=false;
 async function loadBildtexte(){
  try{
   const response=await fetch('./bilder.json',{cache:'no-store'});
   if(!response.ok)throw new Error('HTTP '+response.status);
   const data=await response.json();
-  if(!data||!Array.isArray(data.bilder))throw new Error('Liste "bilder" fehlt');
-  const byNumber=new Map();
+  if(!data||!Array.isArray(data.bilder)||!data.bilder.length)throw new Error('Die Bildliste ist leer oder fehlt.');
+  const seen=new Set(),tasks=[];
   for(const item of data.bilder){
-   if(!Number.isInteger(item.nummer)||typeof item.titel!=='string'||!item.titel.trim()||typeof item.beschreibung!=='string'||byNumber.has(item.nummer))throw new Error('Ungültiger oder doppelter Eintrag in bilder.json');
-   byNumber.set(item.nummer,item);
+   if(!Number.isInteger(item.nummer)||item.nummer<10||item.nummer>99||seen.has(item.nummer))throw new Error('Bildnummer muss eindeutig und zweistellig (10-99) sein: '+item.nummer);
+   if(typeof item.titel!=='string'||!item.titel.trim())throw new Error('Titel fehlt bei Bild '+item.nummer);
+   if(item.typ!=='pflicht'&&item.typ!=='optional')throw new Error('Typ muss pflicht oder optional sein bei Bild '+item.nummer);
+   if(item.beschreibung!==undefined&&typeof item.beschreibung!=='string')throw new Error('Beschreibung ungueltig bei Bild '+item.nummer);
+   if(item.hinweis!==undefined&&typeof item.hinweis!=='string')throw new Error('Hinweis ungueltig bei Bild '+item.nummer);
+   seen.add(item.nummer);
+   tasks.push({n:item.nummer,title:item.titel.trim(),description:(item.beschreibung||'').trim(),rule:item.typ,hinweis:(item.hinweis||'').trim()});
   }
-  for(const t of TASKS){
-   const item=byNumber.get(t.n);
-   if(!item)throw new Error('Bild '+t.n+' fehlt in bilder.json');
-  }
-  for(const t of TASKS){const item=byNumber.get(t.n);t.title=item.titel.trim();t.description=item.beschreibung.trim()}
-  bildtexteStatus='Bildtexte geladen.';
+  TASKS=tasks;
+  bildlisteBereit=true;
+  bildtexteStatus=tasks.length+' Bildpositionen aus bilder.json geladen.';
+  $('start').disabled=false;
+  $('finstatus').textContent='';
  }catch(e){
-  bildtexteStatus='Bildtexte konnten nicht geladen werden ('+e.message+'). Die bisherigen Bezeichnungen werden angezeigt.';
-  console.warn(bildtexteStatus);
+  bildlisteBereit=false;TASKS=[];
+  bildtexteStatus='Bildliste nicht geladen: '+e.message+'. Bitte bilder.json pruefen.';
+  $('start').disabled=true;
+  $('finstatus').textContent=bildtexteStatus;
+  console.error(bildtexteStatus);
  }
 }
-const $=id=>document.getElementById(id);const DB='fzfoto-v3';const STORE='photos';const REQUIRED=TASKS.filter(t=>t.rule==='pflicht').map(t=>t.n);
+const $=id=>document.getElementById(id);const DB='fzfoto-v17';const STORE='photos';
 let db=null,vin='',step=0,photos={},objectURL=null,readyZip=null;
 function activeTasks(){return TASKS}
 function isRequired(t){return t.rule==='pflicht'}
@@ -144,13 +153,14 @@ for(let i=0;i<17;i++){
 $('logoStart').onclick=()=>{$('landing').classList.add('hidden');$('setup').classList.remove('hidden');window.scrollTo(0,0);};
 updateFin();
 function current(){return activeTasks()[Math.min(step,activeTasks().length-1)]}
-function ruleText(t){if(isRequired(t))return 'Pflichtfoto';if(t.rule==='nur_nugget')return 'Optional – nur bei Nugget';if(t.rule==='wo_vorhanden')return 'Optional – falls vorhanden';if(t.rule==='wo_verbaut')return 'Optional – falls verbaut';if(t.rule==='wo_beigelegt')return 'Optional – falls Teile beigelegt';return 'Optional'}
+function ruleText(t){if(isRequired(t))return 'Pflichtfoto';return t.hinweis?'Optional – '+t.hinweis:'Optional'}
 function jumpTo(n){const arr=activeTasks();const i=arr.findIndex(t=>t.n===n);if(i<0)return;step=i;$('work').classList.remove('hidden');$('result').classList.add('hidden');$('overviewDetails').open=false;showStep();window.scrollTo({top:0,behavior:'instant'});$('work').scrollIntoView({block:'start',behavior:'instant'})}
 function renderList(){const ul=$('photoList');ul.replaceChildren();for(const t of activeTasks()){const li=document.createElement('li');const b=document.createElement('button');b.type='button';b.className=(photos[t.n]?'present':isRequired(t)?'missing':'')+(current()&&current().n===t.n?' current':'');b.textContent=(photos[t.n]?'✓ ':isRequired(t)?'! ':'○ ')+`Bild ${t.n}: ${t.title}`+(isRequired(t)?' (Pflicht)':' (optional)');b.onclick=()=>jumpTo(t.n);li.append(b);ul.append(li)}}
 function showStep(){const arr=activeTasks();step=Math.max(0,Math.min(step,arr.length-1));const t=current();$('counter').textContent=`Foto ${step+1} von ${arr.length} · FIN ${vin}`;$('title').textContent=`Bild ${t.n}: ${t.title}`;$('rule').textContent=photos[t.n]&&isRequired(t)?'✓ Pflichtfoto vorhanden':ruleText(t);$('rule').classList.toggle('photo-done',!!photos[t.n]&&isRequired(t));$('work').classList.toggle('optional-task',!isRequired(t));$('hint').textContent='';$('description').textContent=t.description||'';const p=$('preview');p.replaceChildren();if(objectURL){URL.revokeObjectURL(objectURL);objectURL=null}if(photos[t.n]){const im=document.createElement('img');objectURL=URL.createObjectURL(photos[t.n]);im.src=objectURL;im.className='preview';im.alt='Aufgenommenes Bild';p.append(im)}$('photoStatus').textContent=photos[t.n]?'✓ Foto vorhanden':'';$('photoStatus').classList.toggle('has-photo',!!photos[t.n]);$('back').disabled=step===0;$('next').disabled=step===arr.length-1;$('next').classList.toggle('ready',!!photos[t.n]);$('next').classList.toggle('skip',!photos[t.n]&&!isRequired(t));$('next').textContent=photos[t.n]?'Weiter ✓':!isRequired(t)?'Überspringen':'Weiter';renderList()}
 function missing(){return activeTasks().filter(t=>isRequired(t)&&!photos[t.n])}
 function showResult(){const m=missing();$('result').classList.remove('hidden');$('summary').textContent=`FIN ${vin} · ${Object.keys(photos).filter(n=>activeTasks().some(t=>t.n===Number(n))).length} Fotos aufgenommen · ${m.length} Pflichtbilder fehlen.`;$('missing').textContent=m.length?'Bitte diese Pflichtbilder noch aufnehmen:':'✓ Alle Pflichtbilder vorhanden.';const jumps=$('missingJump');jumps.replaceChildren();for(const t of m){const b=document.createElement('button');b.textContent=`Bild ${t.n}: ${t.title}  ›`;b.onclick=()=>jumpTo(t.n);jumps.append(b)}$('prepare').disabled=!!m.length;$('sendMail').disabled=!!m.length;$('prepareStatus').textContent='';readyZip=null;$('result').scrollIntoView({behavior:'instant',block:'start'})}
-async function loadVehicle(){if(!db){alert('Lokaler Fotospeicher noch nicht bereit.');return}const s=finAsString();if(!validVIN(s)){$('finstatus').textContent='Bitte genau 17 Zeichen (ohne I, O, Q) eingeben.';return}vin=s;photos={};readyZip=null;for(const t of TASKS){const b=await dbGet(key(t.n));if(b)photos[t.n]=b}$('finstatus').textContent='Aktives Fahrzeug: '+vin;$('work').classList.remove('hidden');$('overviewSection').classList.remove('hidden');$('setup').classList.add('hidden');$('result').classList.add('hidden');step=0;showStep();$('work').scrollIntoView({behavior:'instant',block:'start'})}
+async function loadVehicle(){if(!bildlisteBereit||!TASKS.length){alert('Bildliste nicht verfuegbar. Bitte bilder.json pruefen.');return}if(!db){alert('Lokaler Fotospeicher noch nicht bereit.');return}const s=finAsString();if(!validVIN(s)){$('finstatus').textContent='Bitte genau 17 Zeichen (ohne I, O, Q) eingeben.';return}vin=s;photos={};readyZip=null;for(const t of TASKS){const b=await dbGet(key(t.n));if(b)photos[t.n]=b}$('finstatus').textContent='Aktives Fahrzeug: '+vin;$('work').classList.remove('hidden');$('overviewSection').classList.remove('hidden');$('setup').classList.add('hidden');$('result').classList.add('hidden');step=0;showStep();$('work').scrollIntoView({behavior:'instant',block:'start'})}
+$('start').disabled=true;
 $('start').onclick=()=>loadVehicle().catch(e=>alert('Laden fehlgeschlagen: '+e.message));
 $('camera').onchange=async e=>{const f=e.target.files&&e.target.files[0];if(!f)return;try{const n=current().n;const blob=new Blob([await f.arrayBuffer()],{type:f.type||'image/jpeg'});await dbPut(key(n),blob);photos[n]=blob;readyZip=null;$('result').classList.add('hidden');showStep();if(step<activeTasks().length-1){step++;showStep();$('work').scrollIntoView({behavior:'instant',block:'start'})}else{$('finish').click()}}catch(err){alert('Foto konnte nicht gespeichert werden: '+err.message)}finally{e.target.value=''}};
 $('back').onclick=()=>{step--;showStep();$('work').scrollIntoView({behavior:'instant',block:'start'})};$('next').onclick=()=>{step++;showStep();$('work').scrollIntoView({behavior:'instant',block:'start'})};$('overview').onclick=()=>{$('overviewDetails').open=true;renderList();$('overviewSection').scrollIntoView({behavior:'instant',block:'start'})};$('backToPhoto').onclick=()=>jumpTo(current().n);
@@ -201,7 +211,7 @@ $('prepare').onclick=async()=>{
   }
   status.textContent='ZIP-Datei wird erstellt …';const blob=await buildZip(files);
   if(blob.size>ZIP_LIMIT)throw new Error('ZIP-Datei ist zu groß für den Ein-Mail-Test.');
-  readyZip=new File([blob],`${vin}_Fahrzeugfotos.zip`,{type:'application/zip'});
+  readyZip=new File([blob],`${vin}_Bilder.zip`,{type:'application/zip'});
   status.textContent=`${nums.length} Fotos in einer ZIP-Datei (${(blob.size/1048576).toFixed(1)} MB).`;
  }catch(e){status.textContent='ZIP-Erstellung nicht möglich: '+e.message}finally{$('prepare').disabled=false}
 };

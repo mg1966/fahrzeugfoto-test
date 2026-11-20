@@ -1,129 +1,155 @@
 {
   "bilder": [
     {
-      "nummer": 1,
-      "titel": "Armaturendisplay mit KM-Stand und Ladezustand (BEV/Hybrid)",
-      "beschreibung": ""
-    },
-    {
-      "nummer": 2,
-      "titel": "Rad mit Reifendaten (Hersteller, Größe, Traglast etc.)",
-      "beschreibung": ""
-    },
-    {
-      "nummer": 3,
-      "titel": "Reifenprofil",
-      "beschreibung": ""
-    },
-    {
-      "nummer": 4,
-      "titel": "Schlüsselcode und Schlüsselnummer",
-      "beschreibung": ""
-    },
-    {
-      "nummer": 5,
-      "titel": "Alle angelieferten Schlüssel",
-      "beschreibung": ""
-    },
-    {
-      "nummer": 6,
-      "titel": "Felgenschloss-Pass",
-      "beschreibung": ""
-    },
-    {
-      "nummer": 7,
-      "titel": "Typenschild Standheizung",
-      "beschreibung": ""
-    },
-    {
-      "nummer": 8,
-      "titel": "Typenschild Westfalia Mobil",
-      "beschreibung": ""
-    },
-    {
-      "nummer": 9,
-      "titel": "Kofferraum mit Reifenreparaturset/Ersatzrad und ggf. Ladekabel",
-      "beschreibung": ""
-    },
-    {
       "nummer": 10,
-      "titel": "Kofferraum: beigelegte Teile (Fußmatten, Radkappen etc.)",
-      "beschreibung": ""
+      "titel": "Armaturendisplay mit KM-Stand und Ladezustand (BEV/Hybrid)",
+      "beschreibung": "",
+      "typ": "pflicht"
     },
     {
       "nummer": 11,
-      "titel": "Abnehmbare Anhängerkupplung: Kugelkopf",
-      "beschreibung": ""
+      "titel": "Rad mit Reifendaten (Hersteller, Größe, Traglast etc.)",
+      "beschreibung": "",
+      "typ": "pflicht"
     },
     {
       "nummer": 12,
-      "titel": "Schlüssel mit Schlüsselnummer des abnehmbaren Kugelkopfes",
-      "beschreibung": ""
+      "titel": "Reifenprofil",
+      "beschreibung": "",
+      "typ": "pflicht"
     },
     {
       "nummer": 13,
-      "titel": "Typenschild Anhängerkupplung",
-      "beschreibung": ""
+      "titel": "Schlüsselcode und Schlüsselnummer",
+      "beschreibung": "",
+      "typ": "pflicht"
+    },
+    {
+      "nummer": 14,
+      "titel": "Alle angelieferten Schlüssel",
+      "beschreibung": "",
+      "typ": "pflicht"
+    },
+    {
+      "nummer": 15,
+      "titel": "Felgenschloss-Pass",
+      "beschreibung": "",
+      "typ": "optional",
+      "hinweis": "falls vorhanden"
+    },
+    {
+      "nummer": 16,
+      "titel": "Typenschild Standheizung",
+      "beschreibung": "",
+      "typ": "optional",
+      "hinweis": "falls verbaut"
+    },
+    {
+      "nummer": 17,
+      "titel": "Typenschild Westfalia Mobil",
+      "beschreibung": "",
+      "typ": "optional",
+      "hinweis": "nur bei Nugget"
+    },
+    {
+      "nummer": 18,
+      "titel": "Kofferraum mit Reifenreparaturset/Ersatzrad und ggf. Ladekabel",
+      "beschreibung": "",
+      "typ": "pflicht"
+    },
+    {
+      "nummer": 19,
+      "titel": "Kofferraum: beigelegte Teile (Fußmatten, Radkappen etc.)",
+      "beschreibung": "",
+      "typ": "optional",
+      "hinweis": "falls Teile beigelegt"
     },
     {
       "nummer": 20,
-      "titel": "Fahrzeugfront von links",
-      "beschreibung": ""
+      "titel": "Abnehmbare Anhängerkupplung: Kugelkopf",
+      "beschreibung": "",
+      "typ": "optional",
+      "hinweis": "falls verbaut"
     },
     {
       "nummer": 21,
-      "titel": "Fahrzeugfront frontal von unten nach oben mit komplettem Stoßfänger",
-      "beschreibung": ""
+      "titel": "Schlüssel mit Schlüsselnummer des abnehmbaren Kugelkopfes",
+      "beschreibung": "",
+      "typ": "optional",
+      "hinweis": "falls verbaut"
     },
     {
       "nummer": 22,
-      "titel": "Fahrzeugfront Motorhaube und Windschutzscheibe",
-      "beschreibung": ""
+      "titel": "Typenschild Anhängerkupplung",
+      "beschreibung": "",
+      "typ": "optional",
+      "hinweis": "falls verbaut"
     },
     {
       "nummer": 23,
-      "titel": "Fahrzeug von vorn rechts",
-      "beschreibung": ""
+      "titel": "Fahrzeugfront von links",
+      "beschreibung": "",
+      "typ": "pflicht"
     },
     {
       "nummer": 24,
-      "titel": "Fahrzeugseite von vorn rechts",
-      "beschreibung": ""
+      "titel": "Fahrzeugfront frontal von unten nach oben mit komplettem Stoßfänger",
+      "beschreibung": "",
+      "typ": "pflicht"
     },
     {
       "nummer": 25,
-      "titel": "Fahrzeugheck von rechts",
-      "beschreibung": ""
+      "titel": "Fahrzeugfront Motorhaube und Windschutzscheibe",
+      "beschreibung": "",
+      "typ": "pflicht"
     },
     {
       "nummer": 26,
-      "titel": "Fahrzeugheck frontal von unten nach oben mit komplettem Stoßfänger",
-      "beschreibung": ""
+      "titel": "Fahrzeug von vorn rechts",
+      "beschreibung": "",
+      "typ": "pflicht"
     },
     {
       "nummer": 27,
-      "titel": "Fahrzeugheck mit Heckklappe und Heckscheibe",
-      "beschreibung": ""
+      "titel": "Fahrzeugseite von vorn rechts",
+      "beschreibung": "",
+      "typ": "pflicht"
     },
     {
       "nummer": 28,
-      "titel": "Fahrzeugheck von links",
-      "beschreibung": ""
+      "titel": "Fahrzeugheck von rechts",
+      "beschreibung": "",
+      "typ": "pflicht"
     },
     {
       "nummer": 29,
-      "titel": "Fahrzeugseite von hinten links",
-      "beschreibung": ""
+      "titel": "Fahrzeugheck frontal von unten nach oben mit komplettem Stoßfänger",
+      "beschreibung": "",
+      "typ": "pflicht"
     },
     {
       "nummer": 30,
-      "titel": "Fahrzeugdach",
-      "beschreibung": ""
+      "titel": "Fahrzeugheck mit Heckklappe und Heckscheibe",
+      "beschreibung": "",
+      "typ": "pflicht"
     },
     {
-      "nummer": 37,
-      "titel": "Lieferschein nach Unterschrift",
-      "beschreibung": ""
+      "nummer": 31,
+      "titel": "Fahrzeugheck von links",
+      "beschreibung": "",
+      "typ": "pflicht"
+    },
+    {
+      "nummer": 32,
+      "titel": "Fahrzeugseite von hinten links",
+      "beschreibung": "",
+      "typ": "pflicht"
+    },
+    {
+      "nummer": 33,
+      "titel": "Fahrzeugdach",
+      "beschreibung": "",
+      "typ": "pflicht"
     }
   ]
 }
