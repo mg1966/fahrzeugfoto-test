@@ -61,7 +61,7 @@ section{background:#fff;box-shadow:none;border:0;border-radius:0;padding:12px 3p
 #work:not(.optional-task) #rule{display:block;width:100%;text-align:center;background:#c81e28;color:#fff;border:2px solid #a3111c;border-radius:12px;padding:13px 14px;font-size:1.15rem;font-weight:900;letter-spacing:.03em;box-shadow:0 2px 5px #0002}
 #work:not(.optional-task) #rule.photo-done{background:#087c3c;border-color:#05632f;color:#fff}
 </style></head><body>
-<section id="landing"><button id="logoStart" type="button" aria-label="Fahrzeugfotos starten"><img src="logo.jpg" alt="Gaul und Klamt Logo"><span>Zum Starten Logo antippen</span></button><small id="versionLabel">Version 17</small></section>
+<section id="landing"><button id="logoStart" type="button" aria-label="Fahrzeugfotos starten"><img src="logo.jpg" alt="Gaul und Klamt Logo"><span>Zum Starten Logo antippen</span></button><small id="versionLabel">Version 18</small></section>
 <section id="setup" class="hidden"><h1>Fahrgestellnummer</h1><div id="vinCells" aria-label="17 FIN-Zeichen einzeln eingeben"></div><div id="vinString" aria-live="polite">—</div><button id="start" type="button" disabled>Fahrzeug beginnen</button><p id="finstatus" role="status"></p></section>
 <section id="work" class="hidden"><div class="tag" id="counter"></div><h2 id="title"></h2><p id="rule" class="muted"></p><p id="hint"></p><p id="description"></p><label class="btn" for="camera">Foto aufnehmen</label><input id="camera" type="file" accept="image/*" capture="environment" class="hidden"><div id="preview"></div><p id="photoStatus"></p><div class="nav"><button id="back" class="secondary">Zurück</button><button id="next">Weiter</button></div><div id="quickNav"><button id="overview" class="secondary">Alle Bilder</button><button id="finish" class="secondary">Abschluss</button></div><details><summary>Hinweise anzeigen</summary><p class="muted tiny">Optionale Bilder können übersprungen werden.</p></details></section>
 <section id="result" class="hidden"><h2>Versand</h2><p id="summary"></p><p id="missing" class="warn"></p><div id="missingJump"></div><button id="backToPhoto" class="secondary">Zur Fotoaufnahme</button><button id="prepare" type="button">ZIP-Datei erstellen</button><p id="prepareStatus" role="status"></p><div id="mailDetails"><p class="tiny muted">Empfänger</p><p><strong id="recipientLabel">Einstellungen werden geladen …</strong></p></div><button id="sendMail" type="button">Mail senden</button><p id="configStatus" class="muted tiny" role="status"></p><button id="restart" class="secondary">Weiteres Fahrzeug beginnen</button></section>
@@ -177,7 +177,9 @@ async function loadMailSettings(){
     const data=await response.json();
     if(typeof data.emailEmpfaenger!=='string'||!validEmail(data.emailEmpfaenger.trim()))throw new Error('Ungültige Empfängeradresse');
 
-    mailSettings={emailEmpfaenger:data.emailEmpfaenger.trim(),emailBetreff:typeof data.emailBetreff==='string'?data.emailBetreff.trim():''};
+    const zipZusatz=typeof data.zipDateiname==='string'?data.zipDateiname.trim():'Bilder';
+    if(!zipZusatz||!/^[A-Za-z0-9_-]{1,40}$/.test(zipZusatz))throw new Error('zipDateiname muss 1 bis 40 Zeichen enthalten (Buchstaben, Zahlen, _ oder -)');
+    mailSettings={emailEmpfaenger:data.emailEmpfaenger.trim(),emailBetreff:typeof data.emailBetreff==='string'?data.emailBetreff.trim():'',zipDateiname:zipZusatz};
     $('recipientLabel').textContent=mailSettings.emailEmpfaenger;
 
     $('configStatus').textContent='';
@@ -211,7 +213,7 @@ $('prepare').onclick=async()=>{
   }
   status.textContent='ZIP-Datei wird erstellt …';const blob=await buildZip(files);
   if(blob.size>ZIP_LIMIT)throw new Error('ZIP-Datei ist zu groß für den Ein-Mail-Test.');
-  readyZip=new File([blob],`${vin}_Bilder.zip`,{type:'application/zip'});
+  readyZip=new File([blob],`${vin}_${mailSettings?.zipDateiname||"Bilder"}.zip`,{type:'application/zip'});
   status.textContent=`${nums.length} Fotos in einer ZIP-Datei (${(blob.size/1048576).toFixed(1)} MB).`;
  }catch(e){status.textContent='ZIP-Erstellung nicht möglich: '+e.message}finally{$('prepare').disabled=false}
 };
