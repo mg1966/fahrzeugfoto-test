@@ -124,26 +124,6 @@
       "nummer": 37,
       "titel": "Lieferschein nach Unterschrift",
       "beschreibung": ""
-    },
-    {
-      "nummer": 40,
-      "titel": "Transportschaden aus 2 Meter Entfernung",
-      "beschreibung": ""
-    },
-    {
-      "nummer": 41,
-      "titel": "Transportschaden Detailaufnahme 1",
-      "beschreibung": ""
-    },
-    {
-      "nummer": 42,
-      "titel": "Transportschaden Detailaufnahme 2",
-      "beschreibung": ""
-    },
-    {
-      "nummer": 43,
-      "titel": "Kennzeichen des anliefernden LKW",
-      "beschreibung": ""
     }
   ]
 }
