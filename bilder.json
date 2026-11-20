@@ -83,70 +83,77 @@
     },
     {
       "nummer": 49,
+      "titel": "Hinten: Rad mit Reifendaten (Hersteller, Größe, Traglast etc.)",
+      "beschreibung": "",
+      "typ": "optional"
+	  "hinweis": "falls hinten andere Reifen als vorn (z.B. Explorer)"
+    },
+	{
+      "nummer": 52,
       "titel": "Fahrzeugheck von rechts",
       "beschreibung": "",
       "typ": "pflicht"
     },
     {
-      "nummer": 52,
+      "nummer": 55,
       "titel": "Fahrzeugheck frontal von unten nach oben mit komplettem Stoßfänger",
       "beschreibung": "",
       "typ": "pflicht"
     },
     {
-      "nummer": 55,
+      "nummer": 58,
       "titel": "Fahrzeugheck mit Heckklappe und Heckscheibe",
       "beschreibung": "",
       "typ": "pflicht"
     },
     {
-      "nummer": 58,
+      "nummer": 61,
       "titel": "Kofferraum mit Reifenreparaturset/Ersatzrad und ggf. Ladekabel",
       "beschreibung": "",
       "typ": "pflicht"
     },
     {
-      "nummer": 61,
+      "nummer": 64,
       "titel": "Kofferraum: beigelegte Teile (Fußmatten, Radkappen etc.)",
       "beschreibung": "",
       "typ": "optional",
       "hinweis": "falls Teile beigelegt"
     },
     {
-      "nummer": 64,
+      "nummer": 67,
       "titel": "Abnehmbare Anhängerkupplung: Kugelkopf",
       "beschreibung": "",
       "typ": "optional",
       "hinweis": "falls verbaut"
     },
     {
-      "nummer": 67,
+      "nummer": 70,
       "titel": "Schlüssel mit Schlüsselnummer des abnehmbaren Kugelkopfes",
       "beschreibung": "",
       "typ": "optional",
       "hinweis": "falls verbaut"
     },
     {
-      "nummer": 70,
+      "nummer": 73,
       "titel": "Typenschild Anhängerkupplung",
       "beschreibung": "",
       "typ": "optional",
       "hinweis": "falls verbaut"
     },
     {
-      "nummer": 73,
+      "nummer": 76,
       "titel": "Fahrzeugheck von links",
       "beschreibung": "",
       "typ": "pflicht"
     },
     {
-      "nummer": 76,
+      "nummer": 79,
       "titel": "Fahrzeugseite von hinten links",
       "beschreibung": "",
       "typ": "pflicht"
     },
     {
-      "nummer": 79,
+      "nummer": 82,
       "titel": "Fahrzeugdach",
       "beschreibung": "",
       "typ": "pflicht"
