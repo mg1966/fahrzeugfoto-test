@@ -2,158 +2,152 @@
   "bilder": [
     {
       "nummer": 10,
-      "titel": "Armaturendisplay mit KM-Stand und Ladezustand (BEV/Hybrid)",
-      "beschreibung": "",
-      "typ": "pflicht"
-    },
-    {
-      "nummer": 11,
-      "titel": "Rad mit Reifendaten (Hersteller, Größe, Traglast etc.)",
-      "beschreibung": "",
-      "typ": "pflicht"
-    },
-    {
-      "nummer": 12,
-      "titel": "Reifenprofil",
+      "titel": "Cockpit mit KM-Stand und Ladezustand (BEV/Hybrid)",
       "beschreibung": "",
       "typ": "pflicht"
     },
     {
       "nummer": 13,
-      "titel": "Schlüsselcode und Schlüsselnummer",
+      "titel": "Alle gelieferten Fahrzeugschlüssel",
       "beschreibung": "",
       "typ": "pflicht"
     },
-    {
-      "nummer": 14,
-      "titel": "Alle angelieferten Schlüssel",
+	{
+      "nummer": 16,
+      "titel": "Schlüsselcode / Schlüsselnummer",
       "beschreibung": "",
       "typ": "pflicht"
-    },
+    }, 
     {
-      "nummer": 15,
+      "nummer": 19,
       "titel": "Felgenschloss-Pass",
       "beschreibung": "",
       "typ": "optional",
       "hinweis": "falls vorhanden"
     },
     {
-      "nummer": 16,
+      "nummer": 22,
       "titel": "Typenschild Standheizung",
       "beschreibung": "",
       "typ": "optional",
-      "hinweis": "falls verbaut"
+      "hinweis": "falls verbaut (an B-Säule)"
     },
     {
-      "nummer": 17,
+      "nummer": 25,
+      "titel": "Vorn: Rad mit Reifendaten (Hersteller, Größe, Traglast etc.)",
+      "beschreibung": "",
+      "typ": "pflicht"
+    },
+    {
+      "nummer": 28,
+      "titel": "Reifenprofil",
+      "beschreibung": "",
+      "typ": "pflicht"
+    },
+    {
+      "nummer": 31,
+      "titel": "Fahrzeugfront von links",
+      "beschreibung": "",
+      "typ": "pflicht"
+    },
+    {
+      "nummer": 34,
+      "titel": "Fahrzeugfront frontal von unten nach oben mit komplettem Stoßfänger",
+      "beschreibung": "",
+      "typ": "pflicht"
+    },
+    {
+      "nummer": 37,
+      "titel": "Fahrzeugfront Motorhaube und Windschutzscheibe",
+      "beschreibung": "",
+      "typ": "pflicht"
+    },
+    {
+      "nummer": 40,
+      "titel": "Fahrzeug von vorn rechts",
+      "beschreibung": "",
+      "typ": "pflicht"
+    },
+    {
+      "nummer": 43,
+      "titel": "Fahrzeugseite von vorn rechts",
+      "beschreibung": "",
+      "typ": "pflicht"
+    },
+    {
+      "nummer": 46,
       "titel": "Typenschild Westfalia Mobil",
       "beschreibung": "",
       "typ": "optional",
       "hinweis": "nur bei Nugget"
     },
     {
-      "nummer": 18,
+      "nummer": 49,
+      "titel": "Fahrzeugheck von rechts",
+      "beschreibung": "",
+      "typ": "pflicht"
+    },
+    {
+      "nummer": 52,
+      "titel": "Fahrzeugheck frontal von unten nach oben mit komplettem Stoßfänger",
+      "beschreibung": "",
+      "typ": "pflicht"
+    },
+    {
+      "nummer": 55,
+      "titel": "Fahrzeugheck mit Heckklappe und Heckscheibe",
+      "beschreibung": "",
+      "typ": "pflicht"
+    },
+    {
+      "nummer": 58,
       "titel": "Kofferraum mit Reifenreparaturset/Ersatzrad und ggf. Ladekabel",
       "beschreibung": "",
       "typ": "pflicht"
     },
     {
-      "nummer": 19,
+      "nummer": 61,
       "titel": "Kofferraum: beigelegte Teile (Fußmatten, Radkappen etc.)",
       "beschreibung": "",
       "typ": "optional",
       "hinweis": "falls Teile beigelegt"
     },
     {
-      "nummer": 20,
+      "nummer": 64,
       "titel": "Abnehmbare Anhängerkupplung: Kugelkopf",
       "beschreibung": "",
       "typ": "optional",
       "hinweis": "falls verbaut"
     },
     {
-      "nummer": 21,
+      "nummer": 67,
       "titel": "Schlüssel mit Schlüsselnummer des abnehmbaren Kugelkopfes",
       "beschreibung": "",
       "typ": "optional",
       "hinweis": "falls verbaut"
     },
     {
-      "nummer": 22,
+      "nummer": 70,
       "titel": "Typenschild Anhängerkupplung",
       "beschreibung": "",
       "typ": "optional",
       "hinweis": "falls verbaut"
     },
     {
-      "nummer": 23,
-      "titel": "Fahrzeugfront von links",
-      "beschreibung": "",
-      "typ": "pflicht"
-    },
-    {
-      "nummer": 24,
-      "titel": "Fahrzeugfront frontal von unten nach oben mit komplettem Stoßfänger",
-      "beschreibung": "",
-      "typ": "pflicht"
-    },
-    {
-      "nummer": 25,
-      "titel": "Fahrzeugfront Motorhaube und Windschutzscheibe",
-      "beschreibung": "",
-      "typ": "pflicht"
-    },
-    {
-      "nummer": 26,
-      "titel": "Fahrzeug von vorn rechts",
-      "beschreibung": "",
-      "typ": "pflicht"
-    },
-    {
-      "nummer": 27,
-      "titel": "Fahrzeugseite von vorn rechts",
-      "beschreibung": "",
-      "typ": "pflicht"
-    },
-    {
-      "nummer": 28,
-      "titel": "Fahrzeugheck von rechts",
-      "beschreibung": "",
-      "typ": "pflicht"
-    },
-    {
-      "nummer": 29,
-      "titel": "Fahrzeugheck frontal von unten nach oben mit komplettem Stoßfänger",
-      "beschreibung": "",
-      "typ": "pflicht"
-    },
-    {
-      "nummer": 30,
-      "titel": "Fahrzeugheck mit Heckklappe und Heckscheibe",
-      "beschreibung": "",
-      "typ": "pflicht"
-    },
-    {
-      "nummer": 31,
+      "nummer": 73,
       "titel": "Fahrzeugheck von links",
       "beschreibung": "",
       "typ": "pflicht"
     },
     {
-      "nummer": 32,
+      "nummer": 76,
       "titel": "Fahrzeugseite von hinten links",
       "beschreibung": "",
       "typ": "pflicht"
     },
     {
-      "nummer": 33,
+      "nummer": 79,
       "titel": "Fahrzeugdach",
-      "beschreibung": "",
-      "typ": "pflicht"
-    },
-    {
-      "nummer": 34,
-      "titel": "Lieferschein nach Unterschrift",
       "beschreibung": "",
       "typ": "pflicht"
     }
