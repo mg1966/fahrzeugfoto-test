@@ -150,6 +150,12 @@
       "titel": "Fahrzeugdach",
       "beschreibung": "",
       "typ": "pflicht"
+    },
+    {
+      "nummer": 34,
+      "titel": "Lieferschein nach Unterschrift",
+      "beschreibung": "",
+      "typ": "pflicht"
     }
   ]
 }
